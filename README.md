@@ -1,52 +1,7 @@
-## Mastering React (Mosh Hamedani)
+# Mastering React (Mosh Hamedani)
 [CourseHunters Video Link](https://coursehunters.net/course/mastering-react-mosh-hamedani)
 
 ### `npm start`
-
-Runs the app in the development mode.<br>
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
-
-Урок 1. 1- What is React 00:04:33
-
-Урок 2. 2- Setting Up the Development Environment 00:03:38
-
-Урок 3. 3- Your First React App 00:06:34
-
-Урок 4. 4- Hello World 00:05:26
-
-Урок 5. 5- Custom Configs 00:03:12
-
-Урок 6. 6- Full-stack Architecture 00:02:45
-
-Урок 7. 7- Course Structure 00:02:25
-
-Урок 8. 1 - Introduction 00:01:44
-
-Урок 9. 2- Let vs Var vs Const 00:03:53
-
-Урок 10. 3- Objects 00:02:46
-
-Урок 11. 4- The this Keyword 00:02:50
-
-Урок 12. 5- Binding this 00:02:37
-
-Урок 13. 6- Arrow Functions 00:04:16
-
-Урок 14. 7- Arrow Functions and this 00:04:15
-
-Урок 15. 8- Array.map Method 00:03:37
-
-Урок 16. 9- Object Destructuring 00:02:30
-
-Урок 17. 10- Spread Operator 00:04:03
-
-Урок 18. 11- Classes 00:03:46
-
-Урок 19. 12- Inheritance 00:04:04
-
-Урок 20. 13- Modules 00:04:12
-
-Урок 21. 14- Named and Default Exports 00:05:16
 
 Урок 22. 1- Introduction 00:01:39
 
