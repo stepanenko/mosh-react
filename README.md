@@ -1,5 +1,4 @@
-# Mastering React (Mosh Hamedani)
-[CourseHunters Video Link](https://coursehunters.net/course/mastering-react-mosh-hamedani)
+# Mosh Hamedani: [Mastering React](https://coursehunters.net/course/mastering-react-mosh-hamedani)
 
 ### `npm start`
 
