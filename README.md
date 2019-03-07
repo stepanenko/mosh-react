@@ -1,6 +1,6 @@
 # Mosh Hamedani: [Mastering React](https://coursehunters.net/course/mastering-react-mosh-hamedani)
 
-### `npm start`
+#### To run use: `npm start`
 
 Урок 22. 1- Introduction 00:01:39
 
