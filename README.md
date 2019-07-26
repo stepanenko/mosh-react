@@ -2,7 +2,7 @@
 
 Duration: 12:15:18
 
-Update date: 10/08/2018
+Updated: 10/08/2018
 
 ### To run the app use: `npm start`
 
