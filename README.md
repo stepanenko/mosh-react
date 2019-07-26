@@ -1,5 +1,9 @@
 # Mosh Hamedani: [Mastering React](https://coursehunters.net/course/mastering-react-mosh-hamedani)
 
+Duration: 12:15:18
+
+Update date: 10/08/2018
+
 ### To run the app use: `npm start`
 
 Урок 22. 1- Introduction 00:01:39
