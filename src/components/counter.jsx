@@ -7,6 +7,10 @@ class Counter extends Component {
     tags: ['hello', 'world']
   }
 
+  handleIncrement = () => {
+    this.setState({ count: this.state.count + 1 });
+  }
+
   styles = {
     fontSize: 20
   }
@@ -18,7 +22,10 @@ class Counter extends Component {
           {this.formatCount()}
         </span>
 
-        <button className="btn btn-secondary btn-sm">Increment</button>
+        <button 
+          onClick={this.handleIncrement} 
+          className="btn btn-secondary btn-sm">Increment
+        </button>
         <br/>
         
         { this.state.tags.length === 0 && "Please add a tag" }
