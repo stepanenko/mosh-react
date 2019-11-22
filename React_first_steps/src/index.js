@@ -3,6 +3,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import Teacher, { promote } from './models/teacher';
 
+
 const root = document.getElementById('root');
 
 // const element = <div>Hello World</div>;

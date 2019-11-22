@@ -1,7 +1,10 @@
-# Mastering React (Mosh Hamedani)
-[CourseHunters Video Link](https://coursehunters.net/course/mastering-react-mosh-hamedani)
+# Mosh Hamedani: [Mastering React](https://coursehunters.net/course/mastering-react-mosh-hamedani)
 
-### `npm start`
+### Updated: 10.08.2018
+
+Duration: 12:15:18
+
+#### To run the app use: `npm start`
 
 Урок 22. 1- Introduction 00:01:39
 
