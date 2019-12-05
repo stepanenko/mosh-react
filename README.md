@@ -4,24 +4,6 @@
 
 Duration: 12:15:18
 
-#### To run the app use: `npm start`
-
-Урок 22. 1- Introduction 00:01:39
-
-Урок 23. 2- Setting Up the Project 00:02:07
-
-Урок 24. 3- Your First React Component 00:05:21
-
-Урок 25. 4- Specifying Children 00:04:17
-
-Урок 26. 5- Embedding Expressions 00:04:51
-
-Урок 27. 6- Setting Attributes 00:05:46
-
-Урок 28. 7- Rendering Classes Dynamically 00:04:19
-
-Урок 29. 8 - Rendering Lists 00:03:59
-
 Урок 30. 9- Conditional Rendering 00:06:05
 
 Урок 31. 10- Handling Events 00:02:50
