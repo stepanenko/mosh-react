@@ -1,5 +1,5 @@
 
-// ======Object destructuring======
+// ___ Object destructuring ___
 
 const address = {
   street: 'Naukova',

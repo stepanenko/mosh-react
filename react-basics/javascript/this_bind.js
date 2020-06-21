@@ -1,33 +1,12 @@
+// 'use strict'; // unnecessary inside of modules
 
-const person = {
-  name: 'Mosh',
-  sayHi() {
+const user = {
+  name: 'Tom',
+  walk() {
     console.log(this);
   }
 }
 
-// person.sayHi(); // { name: 'Mosh', sayHi: [Function: sayHi] }
-const say = person.sayHi.bind(person);
-// say(); // { name: 'Mosh', sayHi: [Function: sayHi] }
-
-
-const user = {
-  talk() {
-    let self = this;
-    setTimeout(function() {
-      console.log('self', self);
-    }, 1000);
-  }
-}
-
-// user.talk(); // self { talk: [Function: talk] }
-
-const user2 = {
-  talk() {
-    setTimeout(() => {
-      console.log('this', this);
-    }, 1000);
-  }
-}
-
-user2.talk(); // self { talk: [Function: talk] }
+user.walk();
+const walk = user.walk.bind(user);
+walk(); // without bind will log Global - in node, Window - in browser
