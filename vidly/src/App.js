@@ -2,11 +2,14 @@
 import React from 'react';
 import './App.css';
 
+import Movies from './components/Movies';
+
 function App() {
   return (
-    <div className="container">
-      <h1>Hello World</h1>
-    </div>
+    <main className="container">
+      <h1>VIDLY APP</h1>
+      <Movies></Movies>
+    </main>
   );
 }
 
