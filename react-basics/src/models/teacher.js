@@ -1,11 +1,11 @@
 
 import { Person } from './person';
 
-export function promote() {
-  console.log('Named with default exports work fine');
+export function promote() { // named export
+  console.log('Promotion!');
 }
 
-export default class Teacher extends Person {
+export default class Teacher extends Person { // default export
   constructor(name, degree) {
     super(name);
     this.degree = degree;

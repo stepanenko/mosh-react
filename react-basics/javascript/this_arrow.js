@@ -14,7 +14,7 @@ user.talk(); // self { talk: [Function: talk] }
 
 const user2 = {
   talk() {
-    setTimeout(() => { // arrow doesn't reset 'this'
+    setTimeout(() => { // arrows don't reset/rebind 'this', they inherit it
       console.log('this', this);
     }, 1000);
   }

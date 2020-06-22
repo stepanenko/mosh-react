@@ -5,15 +5,15 @@ class Counter extends Component {
   state = {
     count: 3,
     tags: ['hello', 'world']
-  }
+  };
 
   handleIncrement = () => {
     this.setState({ count: this.state.count + 1 });
-  }
+  };
 
   styles = {
     fontSize: 20
-  }
+  };
 
   render() {
     return (
@@ -22,14 +22,15 @@ class Counter extends Component {
           {this.formatCount()}
         </span>
 
-        <button 
-          onClick={this.handleIncrement} 
-          className="btn btn-secondary btn-sm">Increment
+        <button
+          onClick={this.handleIncrement}
+          className="btn btn-secondary btn-sm">
+          Increment
         </button>
-        <br/>
-        
-        { this.state.tags.length === 0 && "Please add a tag" }
-        { this.renderTags() }
+        <br />
+
+        {this.state.tags.length === 0 && "Please add a tag"}
+        {this.renderTags()}
       </React.Fragment>
     );
   }
@@ -38,9 +39,9 @@ class Counter extends Component {
     if (this.state.tags.length === 0) return <p>There are no tags</p>;
 
     return (
-    <ul>
-      { this.state.tags.map(tag => <li key={ tag }>{ tag }</li>) }
-    </ul>
+      <ul>
+        {this.state.tags.map(tag => <li key={tag}>{tag}</li>)}
+      </ul>
     );
   }
 
@@ -55,5 +56,5 @@ class Counter extends Component {
     return count === 0 ? 'Zero' : count;
   }
 }
- 
+
 export default Counter;
