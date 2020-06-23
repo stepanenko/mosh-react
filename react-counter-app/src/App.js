@@ -43,7 +43,7 @@ class App extends Component {
     this.setState({ counters });
   }
 
-  getTotalCount() {
+  getTotalItems() {
     return this.state.counters.reduce((accum, c) => accum + c.value, 0);
   }
 
@@ -51,8 +51,8 @@ class App extends Component {
     return (
       <div class="App">
         <Navbar
-          counters={this.state.counters}
-          onGetTotal={this.getTotalCount()}/>
+          totalCounters={this.state.counters.length}
+          totalItems={this.getTotalItems()}/>
         <Counters
           counters={this.state.counters}
           onReset={this.handleReset}

@@ -1,25 +1,27 @@
 
-import React, { Component } from 'react';
+import React from 'react';
 
-class Navbar extends Component {
-  styles = {
-    fontSize: 16
-  }
+// Stateless functional component:
+const Navbar = ({ totalItems, totalCounters }) => {
+  const styles = {
+    fontSize: 15
+  };
 
-  getBadgeClasses() {
+  function getBadgeClasses() {
     let classes = "badge m-2 badge-";
-    classes += (this.props.onGetTotal === 0) ? "warning" : "primary";
+    classes += (totalItems === 0) ? "warning" : "primary";
     return classes;
   }
 
-  render() {
-    return <nav style={{ justifyContent: 'start' }} class="navbar navbar-dark bg-dark">
-      <span class="navbar-brand mb-0 h1">CounterApp</span>
-      <span style={this.styles} className={this.getBadgeClasses()}>
-        Total: {this.props.onGetTotal}
-      </span>
-    </nav>
-  }
+  return (<nav style={{ justifyContent: 'start' }} class="navbar navbar-dark bg-dark">
+    <span class="navbar-brand mb-0 h1">CounterApp</span>
+    <span style={styles} className={getBadgeClasses()}>
+      Total: {totalItems}
+    </span>
+    <span className="badge badge-pill badge-secondary">
+      Counters: {totalCounters}
+    </span>
+  </nav>);
 }
 
 export default Navbar;
