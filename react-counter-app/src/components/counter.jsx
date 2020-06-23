@@ -2,16 +2,12 @@
 import React, { Component } from 'react';
 
 class Counter extends Component {
-  styles = {
-    fontSize: 16
-  };
-
   render() {
     return (
       <React.Fragment>
         {this.props.children}
 
-        <span style={this.styles} className={this.getBadgeClasses()}>
+        <span className={this.getBadgeClasses()}>
           {this.formatCount()}
         </span>
 
