@@ -5,9 +5,6 @@ import Counter from './counter';
 class Counters extends Component {
   render() {
     return <main className="container">
-      {/* <span style={this.styles} className={this.getBadgeClasses()}>
-        Total: {this.props.onGetTotal}
-      </span> */}
       <button onClick={this.props.onReset} className="btn btn-danger btn-sm m-2">
         Reset
       </button>

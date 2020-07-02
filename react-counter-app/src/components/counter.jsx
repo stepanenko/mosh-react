@@ -3,32 +3,33 @@ import React, { Component } from 'react';
 
 class Counter extends Component {
   render() {
-    const { children, onIncrement, onDecrement, onDelete, counter } = this.props;
+    const { onIncrement, onDecrement, onDelete, counter } = this.props;
 
     return (
-      <React.Fragment>
-        {children}
-
-        <span className={this.getBadgeClasses()}>
-          {this.formatCount()}
-        </span>
-
-        <button
-          onClick={() => onIncrement(counter)}
-          className="btn btn-primary btn-sm">
-          Increment
-        </button>
-        <button
-          onClick={() => onDecrement(counter)}
-          className="btn btn-secondary btn-sm m-2">
-          Decrement
-        </button>
-        <button
-          onClick={() => onDelete(counter.id)}
-          className="btn btn-danger btn-sm">
-          Delete
-        </button>
-      </React.Fragment>
+      <div class="row">
+        <div class="col-1">
+          <span className={this.getBadgeClasses()}>
+            {this.formatCount()}
+          </span>
+        </div>
+        <div className="col">
+          <button
+            onClick={() => onIncrement(counter)}
+            className="btn btn-primary btn-sm">
+            +
+            </button>
+          <button
+            onClick={() => onDecrement(counter)}
+            className="btn btn-secondary btn-sm m-2" disabled={this.props.counter.value < 1}>
+            -
+            </button>
+          <button
+            onClick={() => onDelete(counter.id)}
+            className="btn btn-danger btn-sm">
+            x
+          </button>
+        </div>
+      </div>
     );
   }
 

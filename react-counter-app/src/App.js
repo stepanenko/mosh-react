@@ -52,7 +52,7 @@ class App extends Component {
       <div class="App">
         <Navbar
           totalCounters={this.state.counters.length}
-          totalItems={this.getTotalItems()}/>
+          totalItems={this.getTotalItems()} />
         <Counters
           counters={this.state.counters}
           onReset={this.handleReset}
