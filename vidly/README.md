@@ -1,4 +1,2 @@
 
 ## Vidly App
-
-Author: **Mosh**
