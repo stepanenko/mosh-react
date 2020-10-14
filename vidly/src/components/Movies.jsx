@@ -8,6 +8,7 @@ import { getMovies, deleteMovie } from '../services/fakeMovieService';
 class Movies extends Component {
   state = {
     movies: getMovies(),
+    currentPage: 1,
     pageSize: 4
   };
 
@@ -29,7 +30,7 @@ class Movies extends Component {
   }
 
   handlePageChange = page => {
-    console.log(page);
+    this.setState({ currentPage: page });
   };
 
   render() {
@@ -65,6 +66,7 @@ class Movies extends Component {
       <Pagination
         itemsCount={this.state.movies.length}
         pageSize={this.state.pageSize}
+        currentPage={this.state.currentPage}
         onPageChange={this.handlePageChange}
       />
     </div>
