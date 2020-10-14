@@ -1,0 +1,4 @@
+
+.page-item .page-link:focus {
+  box-shadow: none;
+}
