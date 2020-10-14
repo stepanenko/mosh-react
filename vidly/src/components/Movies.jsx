@@ -4,6 +4,7 @@ import React, { Component } from 'react';
 import Like from './common/Like';
 import Pagination from './common/Pagination';
 import { getMovies, deleteMovie } from '../services/fakeMovieService';
+import paginate from '../utils/paginate';
 
 class Movies extends Component {
   state = {
@@ -34,6 +35,9 @@ class Movies extends Component {
   };
 
   render() {
+    const { pageSize, currentPage, movies: allMovies } = this.state;
+    const movies = paginate(allMovies, currentPage, pageSize);
+
     return <div>
       {this.checkMoviesCount()}
 
@@ -50,7 +54,7 @@ class Movies extends Component {
           </tr>
         </thead>
         <tbody>
-          {this.state.movies.map((movie, index) => <tr key={movie._id}>
+          {movies.map((movie, index) => <tr key={movie._id}>
             <td>{index + 1}</td>
             <td>{movie.title}</td>
             <td>{movie.genre.name}</td>
@@ -65,8 +69,8 @@ class Movies extends Component {
       </table>
       <Pagination
         itemsCount={this.state.movies.length}
-        pageSize={this.state.pageSize}
-        currentPage={this.state.currentPage}
+        pageSize={pageSize}
+        currentPage={currentPage}
         onPageChange={this.handlePageChange}
       />
     </div>
