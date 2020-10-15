@@ -1,8 +1,8 @@
 
 import React, { Component } from 'react';
 
-import Like from './common/Like';
-import Pagination from './common/Pagination';
+import Like from './common/like';
+import Pagination from './common/pagination';
 import { getMovies, deleteMovie } from '../services/fakeMovieService';
 import paginate from '../utils/paginate';
 
