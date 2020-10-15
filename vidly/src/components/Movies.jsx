@@ -44,7 +44,7 @@ class Movies extends Component {
       this.setState({ movies: allMovies });
     } else {
       const filteredMovies = allMovies.filter(movie => movie.genre.name === genre);
-      this.setState({ movies: filteredMovies });
+      this.setState({ movies: filteredMovies, currentPage: 1 });
     }
   };
 
@@ -54,6 +54,7 @@ class Movies extends Component {
 
   render() {
     const { pageSize, currentPage, movies: allMovies } = this.state;
+    // const mo = filter(allMovies);
     const movies = paginate(allMovies, currentPage, pageSize);
 
     return (
