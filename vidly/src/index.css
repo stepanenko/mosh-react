@@ -2,3 +2,11 @@
 .page-item .page-link:focus {
   box-shadow: none;
 }
+
+.list-group-item-action {
+  cursor: pointer;
+}
+
+.list-group-item-action:focus {
+  outline: none;
+}

@@ -38,7 +38,7 @@ class Movies extends Component {
     const { pageSize, currentPage, movies: allMovies } = this.state;
     const movies = paginate(allMovies, currentPage, pageSize);
 
-    return <div>
+    return <section>
       {this.checkMoviesCount()}
 
       <table className="table">
@@ -73,7 +73,7 @@ class Movies extends Component {
         currentPage={currentPage}
         onPageChange={this.handlePageChange}
       />
-    </div>
+    </section>
   }
 }
 
