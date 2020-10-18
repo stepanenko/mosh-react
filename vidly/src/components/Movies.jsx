@@ -38,7 +38,7 @@ class Movies extends Component {
     this.setState(movies);
   }
 
-  handleFilterChange = genre => {
+  handleGenreSelect = genre => {
     const allMovies = getMovies();
     if (genre === 'all') {
       this.setState({ movies: allMovies });
@@ -54,13 +54,15 @@ class Movies extends Component {
 
   render() {
     const { pageSize, currentPage, movies: allMovies } = this.state;
-    // const mo = filter(allMovies);
     const movies = paginate(allMovies, currentPage, pageSize);
 
     return (
       <div className="row">
-        <div className="col-2">
-          <ListGroup items={this.state.genres} onFilterClick={this.handleFilterChange}/>
+        <div className="col-3">
+          <ListGroup
+            items={this.state.genres}
+            onItemSelect={this.handleGenreSelect}
+          />
         </div>
         <div className="col">
           {this.checkMoviesCount()}
