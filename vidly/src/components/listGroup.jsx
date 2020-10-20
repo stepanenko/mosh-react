@@ -7,13 +7,6 @@ const ListGroup = ({ items, textProperty, valueProperty, onItemSelect }) => {
 
   return (
     <aside className="list-group">
-      <button className={selectedItem === 'all' ? classes + ' active' : classes}
-        onClick={() => {
-          onItemSelect('all');
-          setSelectedItem('all');
-        }}>
-        All Genres
-      </button>
       {items.map(item => (
         <button
           className={selectedItem === item._id ? classes + ' active' : classes}
@@ -27,11 +20,11 @@ const ListGroup = ({ items, textProperty, valueProperty, onItemSelect }) => {
       ))}
     </aside>
   );
-}
+};
 
 ListGroup.defaultProps = {
   textProperty: 'name',
   valueProperty: '_id'
-}
+};
 
 export default ListGroup;

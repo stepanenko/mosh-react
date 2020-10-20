@@ -1,8 +1,9 @@
 
 import React, { Component } from 'react';
 
-import Like from './common/like';
+// import Like from './common/like';
 import ListGroup from './listGroup';
+import Table from './table';
 import Pagination from './common/pagination';
 
 import paginate from '../utils/paginate';
@@ -19,32 +20,24 @@ class Movies extends Component {
   };
 
   componentDidMount() {
-    this.setState({ genres: getGenres(), movies: getMovies() });
+    const genres = [{ name: 'All Genres', _id: 'all' }, ...getGenres()];
+    this.setState({ movies: getMovies(), genres });
   }
 
-  onDeleteClick = id => {
+  handleDelete = id => {
     deleteMovie(id);
     this.setState({ movies: getMovies() });
   };
 
-  handleLike(movie) {
+  handleLike = movie => { // if this func would be not an arrow one then THIS would point the wrong context
     let movies = [...this.state.movies];
     const index = movies.indexOf(movie);
     movies[index].liked = !movies[index].liked;
     this.setState(movies);
-  }
+  };
 
   handleGenreSelect = genre => {
-    this.setState({ selectedGenre: genre });
-
-    // === My solution ===
-    // const allMovies = getMovies();
-    // if (genre === 'all') {
-    //   this.setState({ movies: allMovies });
-    // } else {
-    //   const filteredMovies = allMovies.filter(movie => movie.genre.name === genre);
-    //   this.setState({ movies: filteredMovies, currentPage: 1 });
-    // }
+    this.setState({ selectedGenre: genre, currentPage: 1 });
   };
 
   handlePageChange = page => {
@@ -70,33 +63,13 @@ class Movies extends Component {
         <div className="col">
           {filtered.length === 0
             ? <p>There are no movies</p>
-            : <p>There are {filtered.length} movies</p>}
-          <table className="table">
-            <thead>
-              <tr>
-                <th>#</th>
-                <th>Title</th>
-                <th>Genre</th>
-                <th>Stock</th>
-                <th>Rate</th>
-                <th></th>
-                <th></th>
-              </tr>
-            </thead>
-            <tbody>
-              {movies.map((movie, index) => <tr key={movie._id}>
-                <td>{index + 1}</td>
-                <td>{movie.title}</td>
-                <td>{movie.genre.name}</td>
-                <td>{movie.numberInStock}</td>
-                <td>{movie.dailyRentalRate}</td>
-                <td><Like isLiked={movie.liked} onClick={() => this.handleLike(movie)}></Like></td>
-                <td><button className="btn btn-danger btn-sm" onClick={() => this.onDeleteClick(movie._id)}>
-                  Delete
-            </button></td>
-              </tr>)}
-            </tbody>
-          </table>
+            : <p>There are {filtered.length} movies</p>
+          }
+          <Table
+            movies={movies}
+            onLikeClick={this.handleLike}
+            onDeleteClick={this.handleDelete}
+          />
           <Pagination
             itemsCount={filtered.length}
             pageSize={pageSize}
