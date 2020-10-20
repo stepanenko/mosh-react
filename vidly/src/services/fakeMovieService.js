@@ -21,6 +21,15 @@ const movies = [
     liked: true
   },
   {
+    _id: "5b21ca3eeb7f6fbccd111112",
+    title: "Thunder Boys",
+    genre: { _id: "5b21ca3eeb7f6fbccd471814", name: "Comedy" },
+    numberInStock: 6,
+    dailyRentalRate: 2,
+    publishDate: "2020-01-03T19:04:28.809Z",
+    liked: false
+  },
+  {
     _id: "5b21ca3eeb7f6fbccd471816",
     title: "Die Hard",
     genre: { _id: "5b21ca3eeb7f6fbccd471818", name: "Action" },
