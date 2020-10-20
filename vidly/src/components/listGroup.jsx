@@ -1,17 +1,26 @@
 
-import React from 'react';
+import React, { useState } from 'react';
 
 const ListGroup = ({ items, textProperty, valueProperty, onItemSelect }) => {
+  let classes = "list-group-item list-group-item-action";
+  const [selectedItem, setSelectedItem] = useState('');
+
   return (
     <aside className="list-group">
-      <button className="list-group-item list-group-item-action active"
-        onClick={() => onItemSelect('all')}>
+      <button className={selectedItem === 'all' ? classes + ' active' : classes}
+        onClick={() => {
+          onItemSelect('all');
+          setSelectedItem('all');
+        }}>
         All Genres
       </button>
       {items.map(item => (
         <button
-          className="list-group-item list-group-item-action"
-          onClick={() => onItemSelect(item.name)}
+          className={selectedItem === item._id ? classes + ' active' : classes}
+          onClick={() => {
+            onItemSelect(item.name);
+            setSelectedItem(item._id);
+          }}
           key={item[valueProperty]}>
           {item[textProperty]}
         </button>
