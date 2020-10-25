@@ -24,6 +24,10 @@ class Movies extends Component {
     this.setState({ movies: getMovies(), genres });
   }
 
+  handleSort = path => {
+    console.log(path);
+  }
+
   handleDelete = id => {
     deleteMovie(id);
     this.setState({ movies: getMovies() });
@@ -67,6 +71,7 @@ class Movies extends Component {
           }
           <Table
             movies={movies}
+            onSort={this.handleSort}
             onLikeClick={this.handleLike}
             onDeleteClick={this.handleDelete}
           />

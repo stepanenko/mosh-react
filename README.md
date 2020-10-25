@@ -7,7 +7,7 @@ Updated: **02.02.2020**
 
 Duration: **13:17:22**
 
-Progress: **79/214**
+Progress: **80/214**
 
 ### Updating React Apps:
 
