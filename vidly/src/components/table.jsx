@@ -12,8 +12,8 @@ const Table = ({ movies, onLikeClick, onDeleteClick, onSort }) => {
           <th>#</th>
           <th onClick={() => onSort('title')}>Title</th>
           <th onClick={() => onSort('genre.name')}>Genre</th>
-          <th onClick={() => onSort('stock')}>Stock</th>
-          <th onClick={() => onSort('rate')}>Rate</th>
+          <th onClick={() => onSort('numberInStock')}>Stock</th>
+          <th onClick={() => onSort('dailyRentalRate')}>Rate</th>
           <th></th>
           <th></th>
         </tr>

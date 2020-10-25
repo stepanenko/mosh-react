@@ -1,5 +1,6 @@
 
 import React, { Component } from 'react';
+import _ from 'lodash';
 
 // import Like from './common/like';
 import ListGroup from './listGroup';
@@ -16,7 +17,8 @@ class Movies extends Component {
     genres: [],
     selectedGenre: 'all',
     currentPage: 1,
-    pageSize: 4
+    pageSize: 4,
+    sortColumn: ''
   };
 
   componentDidMount() {
@@ -25,8 +27,12 @@ class Movies extends Component {
   }
 
   handleSort = path => {
-    console.log(path);
-  }
+    // My solution:
+    const sorted = this.state.sortColumn === path
+      ? [...this.state.movies].reverse()
+      : _.sortBy([...this.state.movies], path);
+    this.setState({ movies: sorted, sortColumn: path });
+  };
 
   handleDelete = id => {
     deleteMovie(id);
@@ -51,9 +57,10 @@ class Movies extends Component {
   render() {
     const { pageSize, currentPage, movies: allMovies, selectedGenre } = this.state;
 
-    const filtered = selectedGenre === 'all'
+    const filtered = selectedGenre === 'all'   // my solution
       ? allMovies
       : allMovies.filter(m => m.genre._id === selectedGenre);
+
     const movies = paginate(filtered, currentPage, pageSize);
 
     return (
