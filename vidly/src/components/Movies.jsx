@@ -1,10 +1,9 @@
 
-import React, { Component } from 'react';
+import React, { Component } from 'react'
 import _ from 'lodash';
 
-// import Like from './common/like';
 import ListGroup from './listGroup';
-import Table from './table';
+import MoviesTable from './moviesTable';
 import Pagination from './common/pagination';
 
 import paginate from '../utils/paginate';
@@ -18,7 +17,7 @@ class Movies extends Component {
     selectedGenre: 'all',
     currentPage: 1,
     pageSize: 4,
-    sortColumn: ''
+    sortColumn: { path: 'title', order: 'asc' }
   };
 
   componentDidMount() {
@@ -26,12 +25,8 @@ class Movies extends Component {
     this.setState({ movies: getMovies(), genres });
   }
 
-  handleSort = path => {
-    // My solution:
-    const sorted = this.state.sortColumn === path
-      ? [...this.state.movies].reverse()
-      : _.sortBy([...this.state.movies], path);
-    this.setState({ movies: sorted, sortColumn: path });
+  handleSort = (sortColumn) => {
+    this.setState({ sortColumn });
   };
 
   handleDelete = id => {
@@ -55,13 +50,15 @@ class Movies extends Component {
   };
 
   render() {
-    const { pageSize, currentPage, movies: allMovies, selectedGenre } = this.state;
+    const { pageSize, currentPage, movies: allMovies, selectedGenre, sortColumn } = this.state;
 
     const filtered = selectedGenre === 'all'   // my solution
       ? allMovies
       : allMovies.filter(m => m.genre._id === selectedGenre);
 
-    const movies = paginate(filtered, currentPage, pageSize);
+    const sorted = _.orderBy(filtered, sortColumn.path, sortColumn.order);
+
+    const movies = paginate(sorted, currentPage, pageSize);
 
     return (
       <div className="row">
@@ -76,8 +73,9 @@ class Movies extends Component {
             ? <p>There are no movies</p>
             : <p>There are {filtered.length} movies</p>
           }
-          <Table
+          <MoviesTable
             movies={movies}
+            sortColumn={sortColumn}
             onSort={this.handleSort}
             onLike={this.handleLike}
             onDelete={this.handleDelete}
