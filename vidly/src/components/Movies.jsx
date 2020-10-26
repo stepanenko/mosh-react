@@ -67,8 +67,8 @@ class Movies extends Component {
           }
           <Table
             movies={movies}
-            onLikeClick={this.handleLike}
-            onDeleteClick={this.handleDelete}
+            onLike={this.handleLike}
+            onDelete={this.handleDelete}
           />
           <Pagination
             itemsCount={filtered.length}

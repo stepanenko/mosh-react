@@ -3,7 +3,7 @@ import React from 'react';
 
 import Like from './common/like';
 
-const Table = ({ movies, onLikeClick, onDeleteClick }) => {
+const Table = ({ movies, onLike, onDelete }) => {
 
   return (
     <table className="table">
@@ -29,12 +29,12 @@ const Table = ({ movies, onLikeClick, onDeleteClick }) => {
             <td>
               <Like
                 isLiked={movie.liked}
-                onClick={() => onLikeClick(movie)}
+                onClick={() => onLike(movie)}
               />
             </td>
             <td>
               <button className="btn btn-danger btn-sm"
-                onClick={() => onDeleteClick(movie._id)}>
+                onClick={() => onDelete(movie._id)}>
                 Delete
               </button>
             </td>
