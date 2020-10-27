@@ -3,19 +3,26 @@ import React, { Component } from 'react';
 
 import TableHeader from './common/tableHeader';
 import TableBody from './common/tableBody';
+import Like from './common/like';
 
 class MoviesTable extends Component {
+
   columns = [
     { label: 'Title', path: 'title' },
     { label: 'Genre', path: 'genre.name' },
     { label: 'Stock', path: 'numberInStock' },
     { label: 'Rate', path: 'dailyRentalRate' },
-    { key: 'like' },
-    { key: 'delete' }
+    { key: 'like', content: movie => <Like isLiked={movie.liked} onClick={() => this.props.onLike(movie)} /> },
+    {
+      key: 'delete', content: movie => <button className="btn btn-danger btn-sm"
+        onClick={() => this.props.onDelete(movie._id)}>
+        Delete
+      </button>
+    }
   ];
 
   render() {
-    const { movies, onLike, onDelete, onSort, sortColumn } = this.props;
+    const { movies, onSort, sortColumn } = this.props;
 
     return (
       <table className="table">
@@ -25,9 +32,8 @@ class MoviesTable extends Component {
           onSort={onSort}
         />
         <TableBody
-          movies={movies}
-          onLike={onLike}
-          onDelete={onDelete}
+          data={movies}
+          columns={this.columns}
         />
       </table>
     );
