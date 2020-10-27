@@ -13,7 +13,7 @@ const movies = [
   },
   {
     _id: "5b21ca3eeb7f6fbccd111815",
-    title: "Sillicon Valley",
+    title: "Silicon Valley",
     genre: { _id: "5b21ca3eeb7f6fbccd471814", name: "Comedy" },
     numberInStock: 2,
     dailyRentalRate: 4,
