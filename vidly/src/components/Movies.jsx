@@ -25,7 +25,8 @@ class Movies extends Component {
     this.setState({ movies: getMovies(), genres });
   }
 
-  handleSort = (sortColumn) => {
+  handleSort = sortColumn => {
+    console.log('sortColumn', sortColumn);
     this.setState({ sortColumn });
   };
 
