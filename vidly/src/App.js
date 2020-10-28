@@ -1,22 +1,28 @@
 
 import React from 'react';
-import { Route, Switch } from 'react-router-dom';
+import { Redirect, Route, Switch } from 'react-router-dom';
 import './index.css';
 
 import Movies from './components/movies';
-import Nav from './components/nav';
+import NavBar from './components/navbar';
 import Home from './components/home';
-import Contact from './components/contact';
+import Posts from './components/posts';
+import Post from './components/common/post';
+import NotFound from './components/common/not_found';
 
 function App() {
   return (
     <>
-      <Nav />
+      <NavBar />
       <main className="container">
         <Switch>
           <Route path='/movies' component={Movies} />
-          <Route path='/contact' component={Contact} />
-          <Route path='/' component={Home} />
+          <Route path='/posts/:post' exact component={Post} />
+          <Route path='/posts/:year?/:month?' render={props => <Posts myProp='cool' {...props} />} />
+          <Redirect from='/films' to='/movies' />
+          <Route path='/not_found' component={NotFound} />
+          <Route path='/' exact component={Home} />
+          <Redirect to='not_found' />
         </Switch>
       </main>
     </>
