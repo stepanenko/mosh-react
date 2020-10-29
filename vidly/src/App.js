@@ -5,11 +5,10 @@ import './index.css';
 
 import Movies from './components/movies';
 import NavBar from './components/navbar';
-import Home from './components/home';
-import Posts from './components/posts';
-import Post from './components/common/post';
+import Customer from './components/common/customer';
 import NotFound from './components/common/not_found';
 import Dashboard from './components/admin/dashboard';
+import Customers from './components/customers';
 
 function App() {
   return (
@@ -18,12 +17,11 @@ function App() {
       <main className="container">
         <Switch>
           <Route path='/movies' component={Movies} />
-          <Route path='/posts/:post' exact component={Post} />
-          <Route path='/posts/:year?/:month?' render={props => <Posts myProp='cool' {...props} />} />
+          <Route path='/customers/:customer' exact component={Customer} />
+          <Route path='/customers/:year?/:month?' render={props => <Customers myProp='cool' {...props} />} />
           <Route path='/admin' component={Dashboard}/>
-          <Redirect from='/films' to='/movies' />
           <Route path='/not_found' component={NotFound} />
-          <Route path='/' exact component={Home} />
+          <Redirect from='/' to='/movies' exact />
           <Redirect to='not_found' />
         </Switch>
       </main>
