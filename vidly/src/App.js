@@ -9,6 +9,7 @@ import Customer from './components/common/customer';
 import NotFound from './components/common/not_found';
 import Dashboard from './components/admin/dashboard';
 import Customers from './components/customers';
+import Movie from './components/common/movie';
 
 function App() {
   return (
@@ -16,6 +17,7 @@ function App() {
       <NavBar />
       <main className="container">
         <Switch>
+          <Route path='/movies/:id' component={Movie} />
           <Route path='/movies' component={Movies} />
           <Route path='/customers/:customer' exact component={Customer} />
           <Route path='/customers/:year?/:month?' render={props => <Customers myProp='cool' {...props} />} />
