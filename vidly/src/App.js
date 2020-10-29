@@ -10,6 +10,7 @@ import NotFound from './components/common/not_found';
 import Dashboard from './components/admin/dashboard';
 import Customers from './components/customers';
 import Movie from './components/common/movie';
+import LoginForm from './components/loginForm';
 
 function App() {
   return (
@@ -19,6 +20,7 @@ function App() {
         <Switch>
           <Route path='/movies/:id' component={Movie} />
           <Route path='/movies' component={Movies} />
+          <Route path='/login' component={LoginForm} />
           <Route path='/customers/:customer' exact component={Customer} />
           <Route path='/customers/:year?/:month?' render={props => <Customers myProp='cool' {...props} />} />
           <Route path='/admin' component={Dashboard}/>

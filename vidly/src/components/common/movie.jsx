@@ -5,7 +5,7 @@ const Movie = ({ match, history }) => {
   const { id } = match.params;
 
   const handleSave = () => {
-    history.replace('/movies');
+    history.push('/movies');
   }
 
   return (
