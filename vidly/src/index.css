@@ -1,4 +1,8 @@
 
+.navbar {
+  margin-bottom: 30px;
+}
+
 .page-item .page-link:focus {
   box-shadow: none;
 }
