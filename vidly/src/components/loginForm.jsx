@@ -1,48 +1,40 @@
 
 import React, { useState } from 'react';
 
+import Input from './common/input';
+
 const LoginForm = () => {
-  const [name, setName] = useState('');
-  const [pass, setPass] = useState('');
-  
-  const submit = React.createRef();
+  const [login, setName] = useState('');
+  const [password, setPass] = useState('');
+  // const [errors, setErrors] = useState({});
+
+  const validate = () => {
+    const errors = {};
+
+    if (login.trim() === '') errors.login = 'Login is required';
+    if (password.trim() === '') errors.password = 'Password is required';
+
+    return Object.keys(errors).length === 0 ? null : errors;
+  }
 
   const handleSubmit = ev => {
     ev.preventDefault();
-    // console.log(submit.current.value);
-    // console.log(pass);
+    let errors = validate();
+    console.log('ERR', errors);
+    if (errors) return;
+
+    console.log('Logged In', { name: login, pass: password });
   }
 
   const handleChange = ({ currentTarget: input }) => {
-    input.name === 'password'
-      ? setPass(input.value)
-      : setName(input.value);
-
-      console.log(name, pass);
+    input.name === 'password' ? setPass(input.value) : setName(input.value);
+    console.log('GOT IT', login, password);
   }
 
   return (
     <form onSubmit={handleSubmit}>
-      <div className="form-group">
-        <label htmlFor="username">Username</label>
-        <input type="login" className="form-control" autoFocus
-          ref={submit}
-          onChange={handleChange}
-          id="username"
-          name="username"
-          placeholder="Your username"
-        />
-      </div>
-      <div className="form-group">
-        <label htmlFor="password">Password</label>
-        <input type="password" className="form-control" 
-          value={pass}
-          onChange={handleChange}
-          id="password"
-          name="password"
-          placeholder="Your password"
-        />
-      </div>
+      <Input field='username' type='login' onInputChange={handleChange} />
+      <Input field='password' type='password' onInputChange={handleChange} />
       <button type="submit" className="btn btn-primary">Submit</button>
     </form>
   );
