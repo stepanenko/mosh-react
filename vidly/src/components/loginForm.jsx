@@ -6,23 +6,26 @@ import Input from './common/input';
 const LoginForm = () => {
   const [login, setName] = useState('');
   const [password, setPass] = useState('');
-  // const [errors, setErrors] = useState({});
+  const [errors, setErrors] = useState({});
 
   const validate = () => {
-    const errors = {};
+    const errorsObj = {};
 
-    if (login.trim() === '') errors.login = 'Login is required';
-    if (password.trim() === '') errors.password = 'Password is required';
+    if (login.trim() === '') errorsObj.login = 'Login is required';
+    if (password.trim() === '') errorsObj.password = 'Password is required';
 
-    return Object.keys(errors).length === 0 ? null : errors;
+    return Object.keys(errorsObj).length === 0 ? null : errorsObj;
   }
-
+  
   const handleSubmit = ev => {
     ev.preventDefault();
-    let errors = validate();
-    console.log('ERR', errors);
-    if (errors) return;
+    const err = validate();
+    setErrors(err || {});
 
+    if (err) {
+      console.log('ERR', errors);
+      return;
+    }
     console.log('Logged In', { name: login, pass: password });
   }
 
@@ -33,8 +36,8 @@ const LoginForm = () => {
 
   return (
     <form onSubmit={handleSubmit}>
-      <Input field='username' type='login' onInputChange={handleChange} />
-      <Input field='password' type='password' onInputChange={handleChange} />
+      <Input field='username' type='login' onInputChange={handleChange} error={errors.login} />
+      <Input field='password' type='password' onInputChange={handleChange} error={errors.password} />
       <button type="submit" className="btn btn-primary">Submit</button>
     </form>
   );

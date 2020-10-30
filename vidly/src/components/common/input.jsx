@@ -1,7 +1,7 @@
 
 import React from 'react';
 
-const Input = ({ field, type, onInputChange }) => {
+const Input = ({ field, type, error, onInputChange }) => {
 
   return (
     <div className="form-group">
@@ -12,6 +12,7 @@ const Input = ({ field, type, onInputChange }) => {
         name={field}
         placeholder={`Your ${field}`}
       />
+      {error && <div className="alert alert-danger">{error}</div>}
     </div>
   );
 }
