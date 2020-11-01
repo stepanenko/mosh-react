@@ -52,7 +52,7 @@ class Form extends Component {
     return <button
       type="submit"
       className="btn btn-primary"
-      // disabled={this.validate()}
+      disabled={this.validate()}
       >
       {label}
     </button>

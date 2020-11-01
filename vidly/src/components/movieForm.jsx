@@ -22,9 +22,9 @@ class MovieForm extends Form {
 
   doSubmit = (movie) => {
     // Call the server
+    const savedMovie = saveMovie(movie);
+    console.log('Movie Added', savedMovie);
     this.props.history.push('/movies');
-    saveMovie(movie);
-    console.log('Movie Added', movie);
   };
 
   render() {

@@ -21,7 +21,7 @@ function App() {
       <main className="container">
         <Switch>
           <Route path='/movies/new-movie' component={MovieForm} />
-          <Route path='/movies/:id' component={Movie} />
+          <Route path='/movies/:id' exact component={Movie} />
           <Route path='/movies' component={Movies} />
           <Route path='/login' component={LoginForm} />
           <Route path='/register' component={RegisterForm} />
