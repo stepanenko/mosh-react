@@ -8,7 +8,7 @@ import Table from './common/table';
 const MoviesTable = ({ movies, onSort, onLike, onDelete, sortColumn }) => {
 
   const columns = [
-    { key: 'title', content: m => <Link to={`/movies/${m._id}`}>{m.title}</Link> },
+    { key: 'title', label: 'Title', path: 'title', content: m => <Link to={`/movies/${m._id}`}>{m.title}</Link> },
     { label: 'Genre', path: 'genre.name' },
     { label: 'Stock', path: 'numberInStock' },
     { label: 'Rate', path: 'dailyRentalRate' },

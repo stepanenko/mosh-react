@@ -10,7 +10,6 @@ const Input = ({ name, label, error, ...rest }) => {
         {...rest}
         name={name}
         id={name}
-        placeholder={`Your ${name}`}
       />
       {error && <div className="alert alert-danger">{error}</div>}
     </div>
