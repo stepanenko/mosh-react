@@ -74,10 +74,10 @@ class Movies extends Component {
           />
         </div>
         <div className="col">
-          <Link to='/movies/new-movie'>
-            <button className='btn btn-primary mb-3'>
+          <Link to='/movies/new-movie' className='btn btn-primary mb-3'>
+            {/* <button className='btn btn-primary mb-3'> */}
               New Movie
-            </button>
+            {/* </button> */}
           </Link>
           {totalCount === 0
             ? <p>There are no movies</p>

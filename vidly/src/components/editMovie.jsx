@@ -6,9 +6,9 @@ import MovieForm from './common/movieForm';
 
 const EditMovie = ({ match, history }) => {
   const movie = getMovie(match.params.id);
-
-  const handleSave = () => {
-    history.push('/movies');
+  if (!movie) {
+    history.replace('/not-found');
+    return null;
   }
 
   return (
