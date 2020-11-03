@@ -3,6 +3,7 @@ import { Component } from 'react';
 import Joi from 'joi-browser';
 
 import Input from './input';
+import Select from './select';
 
 class Form extends Component {
   state = {
@@ -58,32 +59,34 @@ class Form extends Component {
     </button>
   };
 
-  renderSelect = label => {
-    return <div>
-      <label htmlFor="inputSelect">{label}</label>
-      <div className="input-group mb-3">
-        <select className="custom-select" id="inputSelect" name='genreId' onChange={this.handleChange}>
-          {[{ _id: '', name: 'Choose...' }, ...this.state.genres].map(genre =>
-            <option key={genre._id} value={genre._id}>
-              {genre.name}
-            </option>)}
-        </select>
-      </div>
-      {this.state.errors.genreId && <div className="alert alert-danger">{this.state.errors.genreId}</div>}
-    </div>
+  renderSelect = (name, label, options) => {
+    const { data, errors } = this.state;
+
+    return (
+      <Select
+        name={name}
+        label={label}
+        error={errors[name]}
+        options={options}
+        onChange={this.handleChange}
+        value={data[name]}
+      />
+    );
   };
 
   renderInput = (name, label, type = 'text') => {
     const { data, errors } = this.state;
 
-    return <Input
-      name={name}
-      label={label}
-      type={type}
-      onChange={this.handleChange}
-      value={data[name]}
-      error={errors[name]}
-    />
+    return (
+      <Input
+        name={name}
+        label={label}
+        type={type}
+        onChange={this.handleChange}
+        value={data[name]}
+        error={errors[name]}
+      />
+    );
   };
 }
 
