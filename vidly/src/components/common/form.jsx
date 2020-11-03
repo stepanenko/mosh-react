@@ -48,14 +48,29 @@ class Form extends Component {
     this.setState({ data, errors });
   }
 
-  renderButton = (label) => {
+  renderButton = label => {
     return <button
       type="submit"
       className="btn btn-primary"
       disabled={this.validate()}
-      >
+    >
       {label}
     </button>
+  };
+
+  renderSelect = label => {
+    return <div>
+      <label htmlFor="inputSelect">{label}</label>
+      <div className="input-group mb-3">
+        <select className="custom-select" id="inputSelect" name='genreId' onChange={this.handleChange}>
+          {[{ _id: '', name: 'Choose...' }, ...this.state.genres].map(genre =>
+            <option key={genre._id} value={genre._id}>
+              {genre.name}
+            </option>)}
+        </select>
+      </div>
+      {this.state.errors.genreId && <div className="alert alert-danger">{this.state.errors.genreId}</div>}
+    </div>
   };
 
   renderInput = (name, label, type = 'text') => {

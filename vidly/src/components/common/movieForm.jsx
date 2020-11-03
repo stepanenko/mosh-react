@@ -49,18 +49,7 @@ class MovieForm extends Form {
     return (
       <form onSubmit={this.handleSubmit}>
         {this.renderInput('title', 'Title')}
-
-        <label htmlFor="inputSelect">Genre</label>
-        <div className="input-group mb-3">
-          <select className="custom-select" id="inputSelect" name='genreId' onChange={this.handleChange}>
-            {[{ _id: '', name: 'Choose...' }, ...this.state.genres].map(genre =>
-              <option key={genre._id} value={genre._id}>
-                {genre.name}
-              </option>)}
-          </select>
-        </div>
-        {this.state.errors.genreId && <div className="alert alert-danger">{this.state.errors.genreId}</div>}
-
+        {this.renderSelect('Genre')}
         {this.renderInput('numberInStock', 'Number in Stock', 'number')}
         {this.renderInput('dailyRentalRate', 'Rate')}
         {this.renderButton(this.props.action)}
