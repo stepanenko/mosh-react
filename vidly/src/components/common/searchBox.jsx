@@ -1,11 +1,10 @@
 
 import React from 'react';
 
-const SearchBox = ({ data }) => {
+const SearchBox = ({ query, onChange }) => {
+
   const handleChange = ({ currentTarget: input }) => {
-    // console.log(input.value);
-    const result = data.find(item => item.title === input);
-    console.log(result);
+    onChange(input.value);   // my solution
   };
 
   return (
@@ -13,6 +12,7 @@ const SearchBox = ({ data }) => {
       <input type="text"
         className="form-control"
         id="search"
+        value={query}
         placeholder="Search..."
         onChange={handleChange}
       />

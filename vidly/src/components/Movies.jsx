@@ -19,7 +19,8 @@ class Movies extends Component {
     selectedGenre: 'all',
     currentPage: 1,
     pageSize: 4,
-    sortColumn: { path: 'title', order: 'asc' }
+    sortColumn: { path: 'title', order: 'asc' },
+    searchQuery: ''
   };
 
   componentDidMount() {
@@ -31,20 +32,24 @@ class Movies extends Component {
     this.setState({ sortColumn });
   };
 
-  handleDelete = id => {
+  handleDelete = id => { // maybe needs improvement; to not call all left movies from server on each delete
     deleteMovie(id);
     this.setState({ movies: getMovies() });
   };
 
-  handleLike = movie => { // if this func would be not an arrow one then THIS would point the wrong context
+  handleLike = movie => { // if any func would be not an arrow-func, then its THIS would point the wrong context
     let movies = [...this.state.movies];
     const index = movies.indexOf(movie);
     movies[index].liked = !movies[index].liked;
     this.setState(movies);
   };
 
+  handleSearch = query => {
+    this.setState({ searchQuery: query });
+  }
+
   handleGenreSelect = genre => {
-    this.setState({ selectedGenre: genre, currentPage: 1 });
+    this.setState({ selectedGenre: genre, currentPage: 1, searchQuery: '' });
   };
 
   handlePageChange = page => {
@@ -52,18 +57,23 @@ class Movies extends Component {
   };
 
   getPagedData = () => {
-    const { pageSize, currentPage, movies, sortColumn, selectedGenre } = this.state;
+    const {
+      pageSize, currentPage, movies,
+      sortColumn, selectedGenre, searchQuery
+    } = this.state;
 
-    const filtered = selectedGenre === 'all'   // my solution
-      ? movies
-      : movies.filter(m => m.genre._id === selectedGenre);
+    const filtered = searchQuery !== ''   // my solution
+      ? movies.filter(m => m.title.toLowerCase().includes(searchQuery.toLowerCase()))
+      : selectedGenre === 'all'   // my solution
+        ? movies
+        : movies.filter(m => m.genre._id === selectedGenre);
     const sorted = _.orderBy(filtered, sortColumn.path, sortColumn.order);
     const paginated = paginate(sorted, currentPage, pageSize);
     return { totalCount: filtered.length, data: paginated };
   }
 
   render() {
-    const { pageSize, currentPage, sortColumn } = this.state;
+    const { pageSize, currentPage, sortColumn, searchQuery } = this.state;
     const { totalCount, data: movies } = this.getPagedData();
 
     return (
@@ -76,13 +86,10 @@ class Movies extends Component {
         </div>
         <div className="col">
           <Link to='/movies/new-movie' className='btn btn-primary mb-3'>
-              New Movie
+            New Movie
           </Link>
-          <SearchBox data={this.state.movies}/>
-          {totalCount === 0
-            ? <p>There are no movies</p>
-            : <p>There are {totalCount} movies</p>
-          }
+          <p>There are {totalCount || 'no'} movies</p>
+          <SearchBox query={searchQuery} onChange={this.handleSearch} />
           <MoviesTable
             movies={movies}
             sortColumn={sortColumn}
