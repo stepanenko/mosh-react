@@ -1,15 +1,16 @@
 
 import React, { Component } from 'react'
+import { Link } from 'react-router-dom';
 import _ from 'lodash';
 
 import ListGroup from './listGroup';
 import MoviesTable from './moviesTable';
+import SearchBox from './common/searchBox';
 import Pagination from './common/pagination';
 
 import paginate from '../utils/paginate';
 import { getMovies, deleteMovie } from '../services/fakeMovieService';
 import { getGenres } from '../services/fakeGenreService';
-import { Link } from 'react-router-dom';
 
 class Movies extends Component {
   state = {
@@ -75,10 +76,9 @@ class Movies extends Component {
         </div>
         <div className="col">
           <Link to='/movies/new-movie' className='btn btn-primary mb-3'>
-            {/* <button className='btn btn-primary mb-3'> */}
               New Movie
-            {/* </button> */}
           </Link>
+          <SearchBox data={this.state.movies}/>
           {totalCount === 0
             ? <p>There are no movies</p>
             : <p>There are {totalCount} movies</p>
