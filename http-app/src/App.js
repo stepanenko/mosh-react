@@ -8,10 +8,15 @@ class App extends Component {
     posts: []
   };
 
-  componentDidMount() {
-    axios.get('https://jsonplaceholder.typicode.com/posts')
-      .then(response => this.setState({ posts: response.data }))
-      .catch(err => console.log('ERROR:', err));
+  async componentDidMount() {
+    const promise = axios.get('https://jsonplaceholder.typicode.com/posts');
+
+    const { data } = await promise;
+    this.setState({ posts: data });
+    
+    //  OR:
+    // .promise.then(response => this.setState({ posts: response.data }))
+    // .catch(err => console.log('ERROR:', err));
   }
 
   handleAdd = () => {
