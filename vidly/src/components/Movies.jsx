@@ -32,9 +32,11 @@ class Movies extends Component {
     this.setState({ sortColumn });
   };
 
-  handleDelete = id => { // maybe needs improvement; to not call all left movies from server on each delete
+  handleDelete = id => {
+    const movies = this.state.movies.filter(m => m._id !== id);
+    this.setState({ movies });
+
     deleteMovie(id);
-    this.setState({ movies: getMovies() });
   };
 
   handleLike = movie => { // if any func would be not an arrow-func, then its THIS would point the wrong context
