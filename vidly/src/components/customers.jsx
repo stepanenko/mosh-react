@@ -1,11 +1,8 @@
 
 import React from 'react';
-import queryString from 'query-string';
 import { Link } from 'react-router-dom';
 
-const Customers = ({ match, location }) => {
-  const query = queryString.parse(location.search);
-  console.log(query);
+const Customers = ({ match }) => {
 
   const customers = [
     { id: 1, title: 'First' },
