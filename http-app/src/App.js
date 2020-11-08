@@ -3,32 +3,53 @@ import React, { Component } from "react";
 import axios from 'axios';
 import "./App.css";
 
+const apiEndpoint = 'https://jsonplaceholder.typicode.com/posts';
+
 class App extends Component {
   state = {
     posts: []
   };
 
   async componentDidMount() {
-    const promise = axios.get('https://jsonplaceholder.typicode.com/posts');
+    const promise = axios.get(apiEndpoint);
 
     const { data } = await promise;
+    console.log(data);
     this.setState({ posts: data });
-    
+
     //  OR:
     // .promise.then(response => this.setState({ posts: response.data }))
     // .catch(err => console.log('ERROR:', err));
   }
 
-  handleAdd = () => {
-    console.log("Add");
+  handleAdd = async () => {
+    const newPost = {
+      title: 'new post',
+      body: 'something cool'
+    };
+
+    const promise = axios.post(apiEndpoint, newPost);
+    const { data: post } = await promise;
+
+    const posts = [post, ...this.state.posts];
+    this.setState({ posts });
   };
 
-  handleUpdate = post => {
-    console.log("Update", post);
+  handleUpdate = async post => {
+    post.title = 'Updated!';
+
+    // await axios.put(apiEndpoint + '/' + post.id, post);  // to update an entire object
+    await axios.patch(apiEndpoint + '/' + post.id, { title: post.title });
+
+    const posts = [...this.state.posts];
+    this.setState({ posts });
   };
 
-  handleDelete = post => {
-    console.log("Delete", post);
+  handleDelete = async post => {
+    await axios.delete(apiEndpoint + '/' + post.id);
+
+    const posts = this.state.posts.filter(({ id }) => id !== post.id);
+    this.setState({ posts });
   };
 
   render() {
