@@ -51,11 +51,17 @@ class App extends Component {
     const posts = this.state.posts.filter(({ id }) => id !== post.id);
     this.setState({ posts });
 
+    // the following is not working as its shown by Mosh
     try {
       await axios.delete(apiEndpoint + '/' + post.id);
       // throw new Error('err'); // simulate an error
-    } catch (err) {
-      alert('Smth failed while deleting a post');
+    } catch (ex) {
+      if (ex.response && ex.response.status === '404')
+        alert('That post has already been deleted');
+      else {
+        console.log('Logging the error', ex);
+        alert('An unexpected error occured');
+      }
       this.setState({ posts: originalPosts });
     }
   };
