@@ -1,7 +1,7 @@
 
 ## [Mastering React](https://coursehunters.net/course/mastering-react-mosh-hamedani)
 
-Course author: **Mosh Hamedani**
+Course teacher: **Mosh Hamedani**
 
 Updated: **02.02.2020**
 
