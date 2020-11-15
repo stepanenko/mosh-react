@@ -1,10 +1,21 @@
 
 import React, { Component } from "react";
+import * as Sentry from "@sentry/react";
+import { Integrations } from "@sentry/tracing";
+import { ToastContainer } from 'react-toastify';
 
 import http from './services/httpService';
 import config from './config.json';
+import 'react-toastify/dist/ReactToastify.css'
 import "./App.css";
 
+Sentry.init({
+  dsn: "https://38dab39ef6a9450fbd8b6bfd3a625a13@o476891.ingest.sentry.io/5517114",
+  integrations: [
+    new Integrations.BrowserTracing(),
+  ],
+  tracesSampleRate: 1.0,
+});
 
 class App extends Component {
   state = {
@@ -66,6 +77,7 @@ class App extends Component {
   render() {
     return (
       <React.Fragment>
+        <ToastContainer />
         <button className="btn btn-primary" onClick={this.handleAdd}>
           Add
         </button>
