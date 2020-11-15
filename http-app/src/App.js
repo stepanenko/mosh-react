@@ -1,6 +1,6 @@
 
 import React, { Component } from "react";
-import axios from 'axios';
+import http from './services/httpService';
 import "./App.css";
 
 const apiEndpoint = 'https://jsonplaceholder.typicode.com/posts';
@@ -11,7 +11,7 @@ class App extends Component {
   };
 
   async componentDidMount() {
-    const promise = axios.get(apiEndpoint);
+    const promise = http.get(apiEndpoint);
 
     const { data } = await promise;
     console.log(data);
@@ -28,7 +28,7 @@ class App extends Component {
       body: 'something cool'
     };
 
-    const promise = axios.post(apiEndpoint, newPost);
+    const promise = http.post(apiEndpoint, newPost);
     const { data: post } = await promise;
 
     const posts = [post, ...this.state.posts];
@@ -38,8 +38,8 @@ class App extends Component {
   handleUpdate = async post => {
     post.title = 'Updated!';
 
-    // await axios.put(apiEndpoint + '/' + post.id, post);  // to update an entire object
-    await axios.patch(apiEndpoint + '/' + post.id, { title: post.title });
+    // await http.put(apiEndpoint + '/' + post.id, post);  // to update an entire object
+    await http.patch(apiEndpoint + '/' + post.id, { title: post.title });
 
     const posts = [...this.state.posts];
     this.setState({ posts });
@@ -53,15 +53,11 @@ class App extends Component {
 
     // the following is not working as its shown by Mosh
     try {
-      await axios.delete(apiEndpoint + '/' + post.id);
+      await http.delete(apiEndpoint + '/' + post.id);
       // throw new Error('err'); // simulate an error
     } catch (ex) {
       if (ex.response && ex.response.status === '404')
         alert('That post has already been deleted');
-      else {
-        console.log('Logging the error', ex);
-        alert('An unexpected error occured');
-      }
       this.setState({ posts: originalPosts });
     }
   };
