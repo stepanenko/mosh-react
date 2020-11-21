@@ -1,21 +1,11 @@
 
 import React, { Component } from "react";
-import * as Sentry from "@sentry/react";
-import { Integrations } from "@sentry/tracing";
 import { ToastContainer } from 'react-toastify';
 
 import http from './services/httpService';
 import config from './config.json';
 import 'react-toastify/dist/ReactToastify.css'
 import "./App.css";
-
-Sentry.init({
-  dsn: "https://38dab39ef6a9450fbd8b6bfd3a625a13@o476891.ingest.sentry.io/5517114",
-  integrations: [
-    new Integrations.BrowserTracing(),
-  ],
-  tracesSampleRate: 1.0,
-});
 
 class App extends Component {
   state = {
@@ -65,7 +55,7 @@ class App extends Component {
 
     // the following is not working as its shown by Mosh
     try {
-      await http.delete(config.apiEndpoint + '/' + post.id);
+      await http.delete('s' + config.apiEndpoint + '/' + post.id);
       // throw new Error('err'); // simulate an error
     } catch (ex) {
       if (ex.response && ex.response.status === '404')
