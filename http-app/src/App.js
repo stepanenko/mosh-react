@@ -55,7 +55,7 @@ class App extends Component {
 
     // the following is not working as its shown by Mosh
     try {
-      await http.delete('s' + config.apiEndpoint + '/' + post.id);
+      await http.delete(config.apiEndpoint + '/' + post.id);
       // throw new Error('err'); // simulate an error
     } catch (ex) {
       if (ex.response && ex.response.status === '404')
