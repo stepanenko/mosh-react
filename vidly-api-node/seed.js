@@ -1,7 +1,9 @@
-const { Genre } = require("./models/genre");
-const { Movie } = require("./models/movie");
+
 const mongoose = require("mongoose");
 const config = require("config");
+
+const { Genre } = require("./models/genre");
+const { Movie } = require("./models/movie");
 
 const data = [
   {
