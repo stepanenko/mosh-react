@@ -28,6 +28,10 @@ http://localhost:3900/api/genres
 
 You should see the list of genres. That confirms that you have set up everything successfully.
 
+### To midify db data without auth
+
+Change the value of `"requiresAuth"` to `false` inside the `config/default.json`
+
 ### (Optional) Environment Variables
 
 If you look at config/default.json, you'll see a property called jwtPrivateKey. This key is used to encrypt JSON web tokens. So, for security reasons, it should not be checked into the source control. I've set a default value here to make it easier for you to get up and running with this project. For a production scenario, you should store this key as an environment variable.

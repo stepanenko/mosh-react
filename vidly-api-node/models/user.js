@@ -1,3 +1,4 @@
+
 const config = require("config");
 const jwt = require("jsonwebtoken");
 const Joi = require("joi");
@@ -42,7 +43,7 @@ userSchema.methods.generateAuthToken = function() {
 const User = mongoose.model("User", userSchema);
 
 function validateUser(user) {
-  const schema = {
+  const schema = Joi.object({
     name: Joi.string()
       .min(2)
       .max(50)
@@ -56,9 +57,9 @@ function validateUser(user) {
       .min(5)
       .max(255)
       .required()
-  };
+  });
 
-  return Joi.validate(user, schema);
+  return schema.validate(user);
 }
 
 exports.User = User;
