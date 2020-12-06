@@ -5,11 +5,10 @@
   "main": "index.js",
   "scripts": {
     "start": "node index.js",
-    "seed": "node seed.js",
-    "test": "jest --watchAll --verbose"
+    "seed": "node seed.js"
   },
   "keywords": [],
-  "author": "",
+  "author": "Sergio",
   "license": "ISC",
   "dependencies": {
     "bcrypt": "^5.0.0",
