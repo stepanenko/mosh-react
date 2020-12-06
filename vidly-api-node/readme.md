@@ -10,6 +10,7 @@ This is the implementation of Vidly in Node.js.
 ### Connect to your DB
 
     Add a connection URI string into config/default.json as a "db" value
+    DONT commit default.json with your db URI to your public github repo
 
 ### Populate the Database
 
