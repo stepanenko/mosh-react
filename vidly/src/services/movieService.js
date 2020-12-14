@@ -1,8 +1,8 @@
 
-const url = 'http://localhost:3900/api/genres';
+const url = 'http://localhost:3900/api/movies';
 
-export default async function fetchGenres() {
+export default async function fetchMovies() {
   const promise = await fetch(url);
-  const genres = await promise.json();
-  return genres;
+  const movies = await promise.json();
+  return movies;
 }

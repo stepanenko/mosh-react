@@ -2,10 +2,12 @@
 import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 
-import fetchGenres from '../services/movieService';
+import fetchGenres from '../services/genreService';
+import fetchMovies from '../services/movieService';
 
 const Customers = ({ match }) => {
   let [genres, setGenres] = useState([]);
+  let [movies, setMovies] = useState([]);
 
   const customers = [
     { id: 1, title: 'First' },
@@ -16,7 +18,11 @@ const Customers = ({ match }) => {
   useEffect(() => {
     fetchGenres()
       .then(data => setGenres(data))
-      .catch(console.log('Couldnt fetch data'));
+      .catch(console.log('Couldn`t fetch data'));
+
+    fetchMovies()
+      .then(data => setMovies(data))
+      .catch(console.log('Couldn`t fetch data'));
   }, []);
 
   return (
@@ -30,6 +36,10 @@ const Customers = ({ match }) => {
       <h2>Genres:</h2>
       <ul>
         {genres.map(g => <li key={g._id}>{g.name}</li>)}
+      </ul>
+      <h2>Movies:</h2>
+      <ul>
+        {movies.map(m => <li key={m._id}>{m.title}</li>)}
       </ul>
     </>
   );
