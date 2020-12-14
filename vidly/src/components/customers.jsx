@@ -23,7 +23,10 @@ const Customers = ({ match }) => {
     <>
       <h1>All Customers</h1>
       <p>Year: {match.params.year}, Month: {match.params.month}</p>
-      {customers.map(c => <Link to={'/customers/' + c.title} key={c.id}><h2>{c.title}</h2></Link>)}
+      {customers.map(c =>
+        <Link to={'/customers/' + c.title} key={c.id}>
+          <h2>{c.title}</h2>
+        </Link>)}
       <h2>Genres:</h2>
       <ul>
         {genres.map(g => <li key={g._id}>{g.name}</li>)}
