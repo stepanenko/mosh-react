@@ -10,7 +10,10 @@ import Pagination from './common/pagination';
 
 import paginate from '../utils/paginate';
 import { getMovies, deleteMovie } from '../services/fakeMovieService';
-import { getGenres } from '../services/fakeGenreService';
+// import { getGenres } from '../services/fakeGenreService';
+
+import fetchGenres from '../services/genreService';
+import fetchMovies from '../services/movieService';
 
 class Movies extends Component {
   state = {
@@ -24,8 +27,17 @@ class Movies extends Component {
   };
 
   componentDidMount() {
-    const genres = [{ name: 'All Genres', _id: 'all' }, ...getGenres()];
-    this.setState({ movies: getMovies(), genres });
+    // const genres = [{ name: 'All Genres', _id: 'all' }, ...getGenres()]; // old code
+    // this.setState({ movies: getMovies(), genres }); // old code
+    // try to use Promise.all here ...
+    fetchGenres().then(data => {
+      const genres = [{ _id: 'all', name: 'All Genres' }, ...data];
+      this.setState({ genres });
+    });
+
+    fetchMovies().then(data => {
+      this.setState({ movies: data });
+    });
   }
 
   handleSort = sortColumn => {
