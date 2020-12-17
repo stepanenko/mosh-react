@@ -27,17 +27,11 @@ class Movies extends Component {
   };
 
   componentDidMount() {
-    // const genres = [{ name: 'All Genres', _id: 'all' }, ...getGenres()]; // old code
-    // this.setState({ movies: getMovies(), genres }); // old code
-    // try to use Promise.all here ...
     // also can be solved with async/await, as Mosh did
-    fetchGenres().then(data => {
-      const genres = [{ _id: 'all', name: 'All Genres' }, ...data];
-      this.setState({ genres });
-    });
-
-    fetchMovies().then(data => {
-      this.setState({ movies: data });
+    
+    Promise.all([fetchGenres(), fetchMovies()]).then(res => {
+      const genres = [{ _id: 'all', name: 'All Genres' }, ...res[0]];
+      this.setState({ genres, movies: res[1] });
     });
   }
 
