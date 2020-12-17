@@ -3,7 +3,7 @@ import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 
 import fetchGenres from '../services/genreService';
-import fetchMovies from '../services/movieService';
+import { fetchMovies } from '../services/movieService';
 
 const Customers = ({ match }) => {
   let [genres, setGenres] = useState([]);

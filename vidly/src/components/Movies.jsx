@@ -10,10 +10,9 @@ import Pagination from './common/pagination';
 
 import paginate from '../utils/paginate';
 import { getMovies, deleteMovie } from '../services/fakeMovieService';
-// import { getGenres } from '../services/fakeGenreService';
 
 import fetchGenres from '../services/genreService';
-import fetchMovies from '../services/movieService';
+import { fetchMovies, removeMovie } from '../services/movieService';
 
 class Movies extends Component {
   state = {
@@ -28,11 +27,16 @@ class Movies extends Component {
 
   componentDidMount() {
     // also can be solved with async/await, as Mosh did
-    
+
     Promise.all([fetchGenres(), fetchMovies()]).then(res => {
       const genres = [{ _id: 'all', name: 'All Genres' }, ...res[0]];
       this.setState({ genres, movies: res[1] });
+      console.log(this.state.movies);
     });
+
+    removeMovie("5fccd5abe1a7a704dc971d09")
+      .then(m => console.log('removed', m))
+      .catch('Couldnt delete the movie');
   }
 
   handleSort = sortColumn => {
