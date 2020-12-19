@@ -26,28 +26,33 @@ class Movies extends Component {
   };
 
   componentDidMount() {
-    // also can be solved with async/await, as Mosh did
+    // also can be solved with async/await
 
     Promise.all([fetchGenres(), fetchMovies()]).then(res => {
       const genres = [{ _id: 'all', name: 'All Genres' }, ...res[0]];
       this.setState({ genres, movies: res[1] });
       console.log(this.state.movies);
     });
-
-    removeMovie("5fccd5abe1a7a704dc971d09")
-      .then(m => console.log('removed', m))
-      .catch('Couldnt delete the movie');
   }
 
   handleSort = sortColumn => {
     this.setState({ sortColumn });
   };
 
-  handleDelete = id => {
-    const movies = this.state.movies.filter(m => m._id !== id);
+  handleDelete = async id => {
+    const originalMovies = this.state.movies;
+    const movies = originalMovies.filter(m => m._id !== id);
     this.setState({ movies });
 
-    deleteMovie(id);
+    try {
+      const response = await removeMovie(id);
+      if (response.status === 404) {
+        console.error('Movie has already been deleted');
+      }
+    } catch (ex) {
+      console.error('Thats an error', ex);
+      this.setState({ originalMovies });
+    }
   };
 
   handleLike = movie => { // if any func would be not an arrow-func, then its THIS would point the wrong context
