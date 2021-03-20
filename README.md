@@ -1,5 +1,5 @@
 
-## [Mastering React](https://coursehunters.net/course/mastering-react-mosh-hamedani)
+## [Mastering React](https://coursehunter.net/course/mastering-react-mosh-hamedani)
 
 Course teacher: **Mosh Hamedani**
 
