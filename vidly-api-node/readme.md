@@ -5,6 +5,8 @@ This is the implementation of Vidly in Node.js.
 
 ### Install the Dependencies
 
+Before installing all dependencies you can update all of them with `ncu -u`
+
     npm i
 
 ### Connect to your DB

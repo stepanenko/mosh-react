@@ -20,7 +20,7 @@ router.post("/", [auth, validate(validateReturn)], async (req, res) => {
   await Movie.update(
     { _id: rental.movie._id },
     {
-      $inc: { numberInStock: 1 }
+      $inc: { numberInStock: 1 },
     }
   );
 
@@ -30,7 +30,7 @@ router.post("/", [auth, validate(validateReturn)], async (req, res) => {
 function validateReturn(req) {
   const schema = {
     customerId: Joi.objectId().required(),
-    movieId: Joi.objectId().required()
+    movieId: Joi.objectId().required(),
   };
 
   return Joi.validate(req, schema);

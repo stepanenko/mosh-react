@@ -1,4 +1,3 @@
-
 const express = require("express");
 const router = express.Router();
 
@@ -8,9 +7,7 @@ const auth = require("../middleware/auth");
 const admin = require("../middleware/admin");
 
 router.get("/", async (req, res) => {
-  const genres = await Genre.find()
-    .select("-__v")
-    .sort("name");
+  const genres = await Genre.find().select("-__v").sort("name");
   res.send(genres);
 });
 
@@ -32,7 +29,7 @@ router.put("/:id", [auth, validateObjectId], async (req, res) => {
     req.params.id,
     { name: req.body.name },
     {
-      new: true
+      new: true,
     }
   );
 

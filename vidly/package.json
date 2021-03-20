@@ -3,16 +3,16 @@
   "version": "0.3.0",
   "private": true,
   "dependencies": {
-    "bootstrap": "4.1.2",
+    "bootstrap": "4.6.0",
     "font-awesome": "4.7.0",
     "joi-browser": "^13.4.0",
-    "lodash": "4.17.20",
+    "lodash": "4.17.21",
     "prop-types": "^15.7.2",
-    "query-string": "^6.13.6",
+    "query-string": "^7.0.0",
     "react": "17.0.1",
     "react-dom": "17.0.1",
     "react-router-dom": "^5.2.0",
-    "react-scripts": "4.0.0"
+    "react-scripts": "4.0.3"
   },
   "scripts": {
     "start": "react-scripts start",
