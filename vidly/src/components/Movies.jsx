@@ -1,94 +1,103 @@
+import React, { Component } from "react";
+import { Link } from "react-router-dom";
+import _ from "lodash";
 
-import React, { Component } from 'react'
-import { Link } from 'react-router-dom';
-import _ from 'lodash';
+import ListGroup from "./listGroup";
+import MoviesTable from "./moviesTable";
+import SearchBox from "./common/searchBox";
+import Pagination from "./common/pagination";
 
-import ListGroup from './listGroup';
-import MoviesTable from './moviesTable';
-import SearchBox from './common/searchBox';
-import Pagination from './common/pagination';
+import paginate from "../utils/paginate";
+// import { getMovies, deleteMovie } from '../services/fakeMovieService';
 
-import paginate from '../utils/paginate';
-import { getMovies, deleteMovie } from '../services/fakeMovieService';
-
-import fetchGenres from '../services/genreService';
-import { fetchMovies, removeMovie } from '../services/movieService';
+import fetchGenres from "../services/genreService";
+import { fetchMovies, removeMovie } from "../services/movieService";
 
 class Movies extends Component {
   state = {
     movies: [],
     genres: [],
-    selectedGenre: 'all',
+    selectedGenre: "all",
     currentPage: 1,
     pageSize: 4,
-    sortColumn: { path: 'title', order: 'asc' },
-    searchQuery: ''
+    sortColumn: { path: "title", order: "asc" },
+    searchQuery: "",
   };
 
   componentDidMount() {
-    // also can be solved with async/await
+    // also can be solved with async/await, with async placed before componentDidMount()
 
-    Promise.all([fetchGenres(), fetchMovies()]).then(res => {
-      const genres = [{ _id: 'all', name: 'All Genres' }, ...res[0]];
-      this.setState({ genres, movies: res[1] });
-      console.log(this.state.movies);
-    });
+    Promise.all([fetchGenres(), fetchMovies()])
+      .then((res) => {
+        const genres = [{ _id: "all", name: "All Genres" }, ...res[0]];
+        this.setState({ genres, movies: res[1] });
+        console.log(this.state.movies);
+      })
+      .catch((err) => console.log("FE error when fething data", err));
   }
 
-  handleSort = sortColumn => {
+  handleSort = (sortColumn) => {
     this.setState({ sortColumn });
   };
 
-  handleDelete = async id => {
+  handleDelete = async (id) => {
     const originalMovies = this.state.movies;
-    const movies = originalMovies.filter(m => m._id !== id);
+    const movies = originalMovies.filter((m) => m._id !== id);
     this.setState({ movies });
 
     try {
       const response = await removeMovie(id);
       if (response.status === 404) {
-        console.error('Movie has already been deleted');
+        console.error("Movie has already been deleted");
       }
     } catch (ex) {
-      console.error('Thats an error', ex);
+      console.error("Thats an error", ex);
       this.setState({ originalMovies });
     }
   };
 
-  handleLike = movie => { // if any func would be not an arrow-func, then its THIS would point the wrong context
+  handleLike = (movie) => {
+    // if any func would be not an arrow-func, then its THIS would point the wrong context
     let movies = [...this.state.movies];
     const index = movies.indexOf(movie);
     movies[index].liked = !movies[index].liked;
     this.setState(movies);
   };
 
-  handleSearch = query => {
+  handleSearch = (query) => {
     this.setState({ searchQuery: query });
-  }
-
-  handleGenreSelect = genre => {
-    this.setState({ selectedGenre: genre, currentPage: 1, searchQuery: '' });
   };
 
-  handlePageChange = page => {
+  handleGenreSelect = (genre) => {
+    this.setState({ selectedGenre: genre, currentPage: 1, searchQuery: "" });
+  };
+
+  handlePageChange = (page) => {
     this.setState({ currentPage: page });
   };
 
   getPagedData = () => {
     const {
-      pageSize, currentPage, movies,
-      sortColumn, selectedGenre, searchQuery
+      pageSize,
+      currentPage,
+      movies,
+      sortColumn,
+      selectedGenre,
+      searchQuery,
     } = this.state;
 
-    const filtered = searchQuery !== ''   // my solution
-      ? movies.filter(m => m.title.toLowerCase().includes(searchQuery.toLowerCase()))
-      : selectedGenre === 'all'   // my solution
+    const filtered =
+      searchQuery !== "" // my solution
+        ? movies.filter((m) =>
+            m.title.toLowerCase().includes(searchQuery.toLowerCase())
+          )
+        : selectedGenre === "all" // my solution
         ? movies
-        : movies.filter(m => m.genre._id === selectedGenre);
+        : movies.filter((m) => m.genre._id === selectedGenre);
     const sorted = _.orderBy(filtered, sortColumn.path, sortColumn.order);
     const paginated = paginate(sorted, currentPage, pageSize);
     return { totalCount: filtered.length, data: paginated };
-  }
+  };
 
   render() {
     const { pageSize, currentPage, sortColumn, searchQuery } = this.state;
@@ -103,10 +112,10 @@ class Movies extends Component {
           />
         </div>
         <div className="col">
-          <Link to='/movies/new-movie' className='btn btn-primary mb-3'>
+          <Link to="/movies/new-movie" className="btn btn-primary mb-3">
             New Movie
           </Link>
-          <p>There are {totalCount || 'no'} movies</p>
+          <p>There are {totalCount || "no"} movies</p>
           <SearchBox value={searchQuery} onChange={this.handleSearch} />
           <MoviesTable
             movies={movies}
