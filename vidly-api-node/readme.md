@@ -40,3 +40,5 @@ If you look at config/default.json, you'll see a property called jwtPrivateKey. 
 
 On Windows/Mac:\
 `export vidly_jwtPrivateKey=yourSecureKey`
+
+Updated all on 2.05.2021

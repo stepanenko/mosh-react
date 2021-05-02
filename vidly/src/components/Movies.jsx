@@ -89,11 +89,11 @@ class Movies extends Component {
     const filtered =
       searchQuery !== "" // my solution
         ? movies.filter((m) =>
-            m.title.toLowerCase().includes(searchQuery.toLowerCase())
-          )
+          m.title.toLowerCase().includes(searchQuery.toLowerCase())
+        )
         : selectedGenre === "all" // my solution
-        ? movies
-        : movies.filter((m) => m.genre._id === selectedGenre);
+          ? movies
+          : movies.filter((m) => m.genre._id === selectedGenre);
     const sorted = _.orderBy(filtered, sortColumn.path, sortColumn.order);
     const paginated = paginate(sorted, currentPage, pageSize);
     return { totalCount: filtered.length, data: paginated };
