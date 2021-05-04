@@ -25,6 +25,19 @@ const Customers = ({ match }) => {
       .catch(console.log('Couldn`t fetch data'));
   }, []);
 
+  // OR:
+  // useEffect(() => {
+  //   async function fetchData() {
+  //     const genres = await fetchGenres();
+  //     setGenres(genres);
+  
+  //     const movies = await fetchMovies();
+  //     setMovies(movies);
+  //   }
+
+  //   fetchData();
+  // }, []);
+
   return (
     <>
       <h1>All Customers</h1>

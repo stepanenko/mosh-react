@@ -1,8 +1,11 @@
-const Joi = require("joi");
-const bcrypt = require("bcrypt");
-const _ = require("lodash");
-const { User } = require("../models/user");
+
 const express = require("express");
+const bcrypt = require("bcrypt");
+const Joi = require("joi");
+const _ = require("lodash");
+
+const { User } = require("../models/user");
+
 const router = express.Router();
 
 router.post("/", async (req, res) => {
@@ -19,13 +22,13 @@ router.post("/", async (req, res) => {
   res.send(token);
 });
 
-function validate(req) {
+function validate(requestBody) {
   const schema = {
     email: Joi.string().min(5).max(255).required().email(),
     password: Joi.string().min(5).max(255).required(),
   };
 
-  return Joi.validate(req, schema);
+  return Joi.validate(requestBody, schema);
 }
 
 module.exports = router;
