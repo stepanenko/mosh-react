@@ -2,8 +2,8 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import Teacher, { promote } from './models/teacher';
-// Default -> import ... from '';
-// Named -> import { ... } from '';
+// Default -> import ... from '...';
+// Named -> import { ... } from '...';
 
 const root = document.getElementById('root');
 

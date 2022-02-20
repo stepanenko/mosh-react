@@ -17,12 +17,12 @@ class Counter extends Component {
             onClick={() => onIncrement(counter)}
             className="btn btn-primary btn-sm">
             +
-            </button>
+          </button>
           <button
             onClick={() => onDecrement(counter)}
             className="btn btn-secondary btn-sm m-2" disabled={this.props.counter.value < 1}>
             -
-            </button>
+          </button>
           <button
             onClick={() => onDelete(counter.id)}
             className="btn btn-danger btn-sm">

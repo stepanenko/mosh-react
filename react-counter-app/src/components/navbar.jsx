@@ -10,6 +10,7 @@ const Navbar = ({ totalItems, totalCounters }) => {
   function getBadgeClasses() {
     let classes = "badge m-2 badge-";
     classes += (totalItems === 0) ? "warning" : "primary";
+
     return classes;
   }
 

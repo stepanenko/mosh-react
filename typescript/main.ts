@@ -1,6 +1,6 @@
 
 let n: number[] = [5, 6, 6];
-enum Color { Red = 4, Green = 11 , Blue = 55 };
+enum Color { Red = 4, Green = 11, Blue = 55 };
 let backgroundColor = Color.Blue;
 
 //\\//\\//\\

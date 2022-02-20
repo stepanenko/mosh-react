@@ -1,6 +1,6 @@
 {
   "jwtPrivateKey": "unsecureKey",
-  "db": "mongodb+srv://sergio:333444@web.ereos.mongodb.net/vidly?retryWrites=true&w=majority",
+  "db": "mongodb+srv://s**gio:3****4@web.ereos.mongodb.net/vidly?retryWrites=true&w=majority",
   "port": "3900",
   "requiresAuth": false
 }
