@@ -1,10 +1,10 @@
 
 ## Vidly App
 
-Run the node server before using Vidly FE:
-- `cd vidly-api-node`
-- `node index`
+Updated all on 20.02.2022
 
-> To populate the mongo db run `node seed`
-
-Updated all on 2.05.2021
+How to run locally:
+1. Install dependencies for BE: `cd vidly-api-node`, `ncu -u`, `npm i`
+2. Inside `config/default.json` put your Mongo URI as `db`
+3. Populate the Database `node seed.js`
+4. Start the Server `node index`
