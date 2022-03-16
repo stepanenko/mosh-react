@@ -96,15 +96,15 @@ const movies = [
   }
 ];
 
-export function getMovies() {
+export async function getMovies() {
   return movies;
 }
 
-export function getMovie(id) {
+export async function getMovie(id) {
   return movies.find(m => m._id === id);
 }
 
-export function saveMovie(movie) {
+export async function saveMovie(movie) {
   let movieInDb = movies.find(m => m._id === movie._id) || {};
   movieInDb.title = movie.title;
   movieInDb.genre = genresAPI.genres.find(g => g._id === movie.genreId);
@@ -119,7 +119,7 @@ export function saveMovie(movie) {
   return movieInDb;
 }
 
-export function deleteMovie(id) {
+export async function deleteMovie(id) {
   let movieInDb = movies.find(m => m._id === id);
   movies.splice(movies.indexOf(movieInDb), 1);
 

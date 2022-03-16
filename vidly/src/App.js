@@ -1,6 +1,6 @@
 
 import React from 'react';
-import { Navigate, Route, Routes } from 'react-router-dom';
+import { Route, Routes } from 'react-router-dom';
 import './index.css';
 
 import Movies from './components/movies';
@@ -20,17 +20,20 @@ function App() {
       <NavBar />
       <main className="container">
         <Routes>
-          <Route path='/movies/new-movie' element={<AddMovie />} />
-          <Route path='/movies/:id' element={<EditMovie />} />
-          <Route path='/movies' element={<Movies />} />
-          <Route path='/login' element={<LoginForm />} />
-          <Route path='/register' element={<RegisterForm />} />
-          <Route path='/customers/:customer' exact element={<Customer />} />
-          <Route path='/customers/:year?/:month?' render={props => <Customers myProp='cool' {...props} />} />
-          <Route path='/admin' element={<Dashboard />} />
-          <Route path='/not_found' element={<NotFound />} />
-          <Navigate from='/' to='/movies' exact />
-          <Navigate to='not_found' />
+          <Route path='/' element={<Movies />} />
+          <Route path='movies' element={<Movies />}>
+            <Route path='new-movie' element={<AddMovie />} />
+            <Route path=':id' element={<EditMovie />} />
+          </Route>
+          <Route path='login' element={<LoginForm />} />
+          <Route path='register' element={<RegisterForm />} />
+          <Route path='customers' element={<Customers />}>
+            <Route exact path=':customer' element={<Customer />} />
+            <Route path=':year?/:month?' element={props => <Customers myProp='cool' {...props} />} />
+          </Route>
+          <Route path='admin' element={<Dashboard />} />
+          <Route path='not_found' element={<NotFound />} />
+          {/*<Navigate to='not_found' /> */}
         </Routes>
       </main>
     </>

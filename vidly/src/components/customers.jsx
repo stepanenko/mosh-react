@@ -3,8 +3,8 @@ import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 
 // import { fetchGenres } from '../services/genreService';
-import { getGenres as fetchGenres } from '../services/fakeGenreService';
 // import { fetchMovies } from '../services/movieService';
+import { getGenres as fetchGenres } from '../services/fakeGenreService';
 import { getMovies as fetchMovies } from '../services/fakeMovieService';
 
 const Customers = ({ match }) => {
@@ -43,7 +43,7 @@ const Customers = ({ match }) => {
   return (
     <>
       <h1>All Customers</h1>
-      <p>Year: {match.params.year}, Month: {match.params.month}</p>
+      {/* <p>Year: {match.params.year}, Month: {match.params.month}</p> */}
       {customers.map(c =>
         <Link to={'/customers/' + c.title} key={c.id}>
           <h2>{c.title}</h2>

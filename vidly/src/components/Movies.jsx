@@ -10,8 +10,10 @@ import Pagination from "./common/pagination";
 import paginate from "../utils/paginate";
 // import { getMovies, deleteMovie } from '../services/fakeMovieService';
 
-import { fetchGenres } from "../services/genreService";
-import { fetchMovies, removeMovie } from "../services/movieService";
+// import { fetchGenres } from "../services/genreService";
+// import { fetchMovies, removeMovie } from "../services/movieService";
+import { getGenres as fetchGenres } from '../services/fakeGenreService';
+import { getMovies as fetchMovies, deleteMovie as removeMovie } from '../services/fakeMovieService';
 
 class Movies extends Component {
   state = {
