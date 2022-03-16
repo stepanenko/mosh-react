@@ -2,8 +2,10 @@
 import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 
-import fetchGenres from '../services/genreService';
-import { fetchMovies } from '../services/movieService';
+// import { fetchGenres } from '../services/genreService';
+import { getGenres as fetchGenres } from '../services/fakeGenreService';
+// import { fetchMovies } from '../services/movieService';
+import { getMovies as fetchMovies } from '../services/fakeMovieService';
 
 const Customers = ({ match }) => {
   let [genres, setGenres] = useState([]);
@@ -30,7 +32,7 @@ const Customers = ({ match }) => {
   //   async function fetchData() {
   //     const genres = await fetchGenres();
   //     setGenres(genres);
-  
+
   //     const movies = await fetchMovies();
   //     setMovies(movies);
   //   }

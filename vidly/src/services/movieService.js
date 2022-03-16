@@ -6,6 +6,7 @@ const apiEndpoint = apiUrl + '/movies';
 export async function fetchMovies() {
   const promise = await fetch(apiEndpoint);
   const movies = await promise.json();
+
   return movies;
 }
 

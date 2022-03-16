@@ -1,6 +1,6 @@
 
 import React from 'react';
-import { Redirect, Route, Switch } from 'react-router-dom';
+import { Navigate, Route, Routes } from 'react-router-dom';
 import './index.css';
 
 import Movies from './components/movies';
@@ -19,19 +19,19 @@ function App() {
     <>
       <NavBar />
       <main className="container">
-        <Switch>
-          <Route path='/movies/new-movie' component={AddMovie} />
-          <Route path='/movies/:id' component={EditMovie} />
-          <Route path='/movies' component={Movies} />
-          <Route path='/login' component={LoginForm} />
-          <Route path='/register' component={RegisterForm} />
-          <Route path='/customers/:customer' exact component={Customer} />
+        <Routes>
+          <Route path='/movies/new-movie' element={<AddMovie />} />
+          <Route path='/movies/:id' element={<EditMovie />} />
+          <Route path='/movies' element={<Movies />} />
+          <Route path='/login' element={<LoginForm />} />
+          <Route path='/register' element={<RegisterForm />} />
+          <Route path='/customers/:customer' exact element={<Customer />} />
           <Route path='/customers/:year?/:month?' render={props => <Customers myProp='cool' {...props} />} />
-          <Route path='/admin' component={Dashboard} />
-          <Route path='/not_found' component={NotFound} />
-          <Redirect from='/' to='/movies' exact />
-          <Redirect to='not_found' />
-        </Switch>
+          <Route path='/admin' element={<Dashboard />} />
+          <Route path='/not_found' element={<NotFound />} />
+          <Navigate from='/' to='/movies' exact />
+          <Navigate to='not_found' />
+        </Routes>
       </main>
     </>
   );
