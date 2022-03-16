@@ -27,7 +27,7 @@ function App() {
           <Route path='/register' component={RegisterForm} />
           <Route path='/customers/:customer' exact component={Customer} />
           <Route path='/customers/:year?/:month?' render={props => <Customers myProp='cool' {...props} />} />
-          <Route path='/admin' component={Dashboard}/>
+          <Route path='/admin' component={Dashboard} />
           <Route path='/not_found' component={NotFound} />
           <Redirect from='/' to='/movies' exact />
           <Redirect to='not_found' />

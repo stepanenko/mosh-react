@@ -1,4 +1,10 @@
-## Introduction
+
+## Not working (16.03.22)
+
+This backend app is broken because of outdated and vulnerable library called `fawm`.  
+It should be rewritten whether with Fastify or replaced with Firebase.
+
+### Introduction
 
 This project is the backend of Vidly, a video rental app.
 This is the implementation of Vidly in Node.js.
@@ -22,11 +28,10 @@ Before installing all dependencies you can update all of them with `ncu -u`
 
     node index.js
 
-This will launch the Node server on port 3900. If that port is busy, you can set a different point in config/default.json.
+This will launch the Node server on port 3900.
+If that port is busy, set a different one in `config/default.json`.
 
-Open up your browser and head over to:
-
-http://localhost:3900/api/genres
+Open up your browser and head over to: http://localhost:3900/api/genres
 
 You should see the list of genres. That confirms that you have set up everything successfully.
 
@@ -36,7 +41,7 @@ Change the value of `"requiresAuth"` to `false` inside the `config/default.json`
 
 ### (Optional) Environment Variables
 
-If you look at config/default.json, you'll see a property called jwtPrivateKey. This key is used to encrypt JSON web tokens. So, for security reasons, it should not be checked into the source control. I've set a default value here to make it easier for you to get up and running with this project. For a production scenario, you should store this key as an environment variable.
+If you look at `config/default.json`, you'll see a property called `jwtPrivateKey`. This key is used to encrypt JSON web tokens. So, for security reasons, it should not be checked into the source control. I've set a default value here to make it easier for you to get up and running with this project. For a production scenario, you should store this key as an environment variable.
 
 On Windows/Mac:\
 `export vidly_jwtPrivateKey=yourSecureKey`
