@@ -3,12 +3,12 @@ import React from 'react';
 
 import MovieForm from './common/movieForm';
 
-const AddMovie = ({ history }) => {
+const AddMovie = ({ navigate }) => {
 
   return (
     <div>
       <h1>Add a Movie</h1>
-      <MovieForm action='Add Movie' history={history} />
+      <MovieForm action='Add Movie' navigate={navigate} />
     </div>
   );
 }

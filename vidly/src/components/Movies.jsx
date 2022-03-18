@@ -8,7 +8,6 @@ import SearchBox from "./common/searchBox";
 import Pagination from "./common/pagination";
 
 import paginate from "../utils/paginate";
-// import { getMovies, deleteMovie } from '../services/fakeMovieService';
 
 // import { fetchGenres } from "../services/genreService";
 // import { fetchMovies, removeMovie } from "../services/movieService";

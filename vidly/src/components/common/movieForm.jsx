@@ -1,12 +1,11 @@
 import React from 'react';
 import Joi from 'joi-browser';
 
+import Form from './form';
 import { getGenres } from '../../services/fakeGenreService';
 import { saveMovie } from '../../services/fakeMovieService';
-import Form from './form';
 
 class MovieForm extends Form {
-
   state = {
     data: { title: '', genreId: '', numberInStock: '', dailyRentalRate: '' },
     errors: {},
@@ -22,10 +21,11 @@ class MovieForm extends Form {
   };
 
   componentDidMount() {
-    const genres = getGenres();
-    this.setState({ genres });
-    if (this.props.movie)
+    getGenres().then(genres => this.setState({ genres }));
+
+    if (this.props.movie) {
       this.setState({ data: this.mapToViewModel(this.props.movie) });
+    }
   }
 
   mapToViewModel(movie) {
@@ -38,11 +38,11 @@ class MovieForm extends Form {
     };
   }
 
-  doSubmit = movie => {
-    // Call the server
-    const savedMovie = saveMovie(movie);
+  doSubmit = async movie => {
+    const savedMovie = await saveMovie(movie);
     console.log(this.props.action, savedMovie);
-    this.props.history.push('/movies');
+    console.log('props', this.props);
+    this.props.navigate('movies');
   };
 
   render() {
