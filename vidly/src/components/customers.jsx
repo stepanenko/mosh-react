@@ -18,26 +18,26 @@ const Customers = ({ match }) => {
   ];
 
   useEffect(() => {
-    fetchGenres()
-      .then(data => setGenres(data))
-      .catch(console.log('Couldn`t fetch data'));
+    async function fetchData() {
+      const genres = await fetchGenres();
+      setGenres(genres);
 
-    fetchMovies()
-      .then(data => setMovies(data))
-      .catch(console.log('Couldn`t fetch data'));
+      const movies = await fetchMovies();
+      setMovies(movies);
+    }
+
+    fetchData();
   }, []);
 
-  // OR:
+  // Or romise way:
   // useEffect(() => {
-  //   async function fetchData() {
-  //     const genres = await fetchGenres();
-  //     setGenres(genres);
+  //   fetchGenres()
+  //     .then(data => setGenres(data))
+  //     .catch(err => console.log('Couldn`t fetch data', err));
 
-  //     const movies = await fetchMovies();
-  //     setMovies(movies);
-  //   }
-
-  //   fetchData();
+  //   fetchMovies()
+  //     .then(data => setMovies(data))
+  //     .catch(err => console.log('Couldn`t fetch data', err));
   // }, []);
 
   return (

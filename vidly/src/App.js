@@ -13,6 +13,9 @@ import LoginForm from './components/loginForm';
 import RegisterForm from './components/registerForm';
 import AddMovie from './components/addMovie';
 import EditMovie from './components/editMovie';
+import Rentals from './components/rentals';
+import Users from './components/admin/users';
+import Products from './components/admin/products';
 
 
 function App() {
@@ -33,7 +36,11 @@ function App() {
             <Route exact path=':customer' element={<Customer />} />
             <Route path=':year?/:month?' element={props => <Customers myProp='cool' {...props} />} />
           </Route>
-          <Route path='admin' element={<Dashboard />} />
+          <Route path='rentals' element={<Rentals />} />
+          <Route path='admin' element={<Dashboard />}>
+            <Route path='users' element={<Users />} />
+            <Route path='products' element={<Products />} />
+          </Route>
           <Route path='not_found' element={<NotFound />} />
           {/*<Navigate to='not_found' /> */}
         </Routes>
