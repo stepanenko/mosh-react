@@ -34,7 +34,7 @@ function App() {
           <Route path='register' element={<RegisterForm />} />
           <Route path='customers' element={<Customers />}>
             <Route exact path=':customer' element={<Customer />} />
-            <Route path=':year?/:month?' element={props => <Customers myProp='cool' {...props} />} />
+            <Route path=':year?/:month?' element={props => <Customers {...props} />} />
           </Route>
           <Route path='rentals' element={<Rentals />} />
           <Route path='admin' element={<Dashboard />}>

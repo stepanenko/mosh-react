@@ -24,6 +24,7 @@ class MovieForm extends Form {
     getGenres().then(genres => this.setState({ genres }));
 
     if (this.props.movie) {
+      console.log('movie', this.props.movie);
       this.setState({ data: this.mapToViewModel(this.props.movie) });
     }
   }

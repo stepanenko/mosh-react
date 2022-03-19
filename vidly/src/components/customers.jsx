@@ -7,7 +7,7 @@ import { Link } from 'react-router-dom';
 import { getGenres as fetchGenres } from '../services/fakeGenreService';
 import { getMovies as fetchMovies } from '../services/fakeMovieService';
 
-const Customers = ({ match }) => {
+function Customers() {
   let [genres, setGenres] = useState([]);
   let [movies, setMovies] = useState([]);
 
