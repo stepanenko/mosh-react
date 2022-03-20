@@ -26,13 +26,12 @@ class Movies extends Component {
   };
 
   componentDidMount() {
-    // also can be solved with async/await, with async placed before componentDidMount()
+    // also can be solved with async/await, with 'async' put before componentDidMount()
 
     Promise.all([fetchGenres(), fetchMovies()])
       .then((res) => {
         const genres = [{ _id: "all", name: "All Genres" }, ...res[0]];
         this.setState({ genres, movies: res[1] });
-        console.log(this.state.movies);
       })
       .catch((err) => console.log("FE error when fething data", err));
   }
