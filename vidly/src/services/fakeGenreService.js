@@ -6,5 +6,5 @@ export const genres = [
 ];
 
 export async function getGenres() {
-  return genres.filter(g => g);
+  return [...genres];
 }

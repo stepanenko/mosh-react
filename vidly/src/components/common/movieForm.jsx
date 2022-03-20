@@ -3,7 +3,7 @@ import Joi from 'joi-browser';
 
 import Form from './form';
 import { getGenres } from '../../services/fakeGenreService';
-import { saveMovie } from '../../services/fakeMovieService';
+import { getMovie, saveMovie } from '../../services/fakeMovieService';
 
 class MovieForm extends Form {
   state = {
@@ -23,9 +23,10 @@ class MovieForm extends Form {
   componentDidMount() {
     getGenres().then(genres => this.setState({ genres }));
 
-    if (this.props.movie) {
-      console.log('movie', this.props.movie);
-      this.setState({ data: this.mapToViewModel(this.props.movie) });
+    if (this.props.movieId) {
+      getMovie(this.props.movieId).then(movie => {
+        this.setState({ data: this.mapToViewModel(movie) });
+      });
     }
   }
 

@@ -1,6 +1,6 @@
 
 import React, { StrictMode } from 'react';
-import ReactDOM from 'react-dom';
+import * as ReactDOMClient from 'react-dom/client';
 import { BrowserRouter } from 'react-router-dom';
 
 import App from './App';
@@ -8,11 +8,13 @@ import './index.css';
 import 'bootstrap/dist/css/bootstrap.css';
 import 'font-awesome/css/font-awesome.css';
 
-ReactDOM.render(
+const container = document.getElementById('app');
+const root = ReactDOMClient.createRoot(container);
+
+root.render(
   <StrictMode>
     <BrowserRouter>
       <App />
     </BrowserRouter>
-  </StrictMode>,
-  document.getElementById('root')
+  </StrictMode>
 );
