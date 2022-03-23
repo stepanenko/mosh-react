@@ -12,19 +12,20 @@ function EditMovie() {
 
   useEffect(() => {
     async function fetchMovie() {
-      const selectedMovie = await getMovie(params.id, 10);
+      const selectedMovie = await getMovie(params.id);
+
+      if (!selectedMovie) {
+        console.log('Movie not found');
+        navigate('../../not-found', { replace: true });
+        return null;
+      }
+
       console.log('EDIT selectedMovie >>', selectedMovie.title);
       setMovie(selectedMovie);
     }
 
     fetchMovie();
-  }, [params.id]);
-
-  if (!movie) {
-    console.log('Movie not found');
-    navigate('not-found', { replace: true });
-    return null;
-  }
+  }, [params.id, navigate]);
 
   return (
     <div>

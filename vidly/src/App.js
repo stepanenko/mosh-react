@@ -6,7 +6,7 @@ import './index.css';
 import Movies from './components/movies';
 import NavBar from './components/navbar';
 import Customer from './components/common/customer';
-import NotFound from './components/common/not_found';
+import NotFound from './components/common/notFound';
 import Dashboard from './components/admin/dashboard';
 import Customers from './components/customers';
 import LoginForm from './components/loginForm';
@@ -41,8 +41,7 @@ function App() {
             <Route path='users' element={<Users />} />
             <Route path='products' element={<Products />} />
           </Route>
-          <Route path='not_found' element={<NotFound />} />
-          {/*<Navigate to='not_found' /> */}
+          <Route path='not-found' element={<NotFound />} />
         </Routes>
       </main>
     </>

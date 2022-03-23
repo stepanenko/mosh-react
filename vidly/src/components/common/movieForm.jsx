@@ -20,13 +20,20 @@ class MovieForm extends Form {
     dailyRentalRate: Joi.number().min(0).max(10).required().label('Rate')
   };
 
-  componentDidMount() {
-    getGenres().then(genres => this.setState({ genres }));
+  async componentDidMount() {
+    const genres = await getGenres();
+    this.setState({ genres });
 
     if (this.props.movieId) {
-      getMovie(this.props.movieId).then(movie => {
-        this.setState({ data: this.mapToViewModel(movie) });
-      });
+      const movie = await getMovie(this.props.movieId);
+
+      if (!movie) {
+        console.log('Movie not found');
+        this.props.navigate('../../not-found', { replace: true });
+        return null;
+      }
+
+      this.setState({ data: this.mapToViewModel(movie) });
     }
   }
 
