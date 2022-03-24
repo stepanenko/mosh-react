@@ -29,8 +29,7 @@ class MovieForm extends Form {
 
       if (!movie) {
         console.log('Movie not found');
-        this.props.navigate('../../not-found', { replace: true });
-        return null;
+        return this.props.navigate('../../not-found', { replace: true });
       }
 
       this.setState({ data: this.mapToViewModel(movie) });
