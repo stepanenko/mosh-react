@@ -57,7 +57,7 @@ class Movies extends Component {
   };
 
   handleLike = (movie) => {
-    // if any func would be not an arrow-func, then its THIS would point the wrong context
+    // if any func wouldn't be an arrow-func its THIS would point to the wrong context
     let movies = [...this.state.movies];
     const index = movies.indexOf(movie);
     movies[index].liked = !movies[index].liked;
@@ -96,6 +96,7 @@ class Movies extends Component {
           : movies.filter((m) => m.genre._id === selectedGenre);
     const sorted = _.orderBy(filtered, sortColumn.path, sortColumn.order);
     const paginated = paginate(sorted, currentPage, pageSize);
+
     return { totalCount: filtered.length, data: paginated };
   };
 

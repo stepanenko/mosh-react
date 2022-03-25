@@ -2,6 +2,7 @@
 import React from 'react';
 
 const SearchBox = ({ value, onChange }) => {
+  const onSearchInput = (event) => onChange(event.currentTarget.value);
 
   return (
     <input className="form-control my-3"
@@ -9,7 +10,7 @@ const SearchBox = ({ value, onChange }) => {
       type="text"
       value={value}
       placeholder="Search..."
-      onChange={ev => onChange(ev.currentTarget.value)}
+      onChange={onSearchInput}
     />
   );
 };

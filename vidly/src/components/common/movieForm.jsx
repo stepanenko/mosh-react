@@ -20,10 +20,12 @@ class MovieForm extends Form {
     dailyRentalRate: Joi.number().min(0).max(10).required().label('Rate')
   };
 
-  async componentDidMount() {
+  async populateGenres() {
     const genres = await getGenres();
     this.setState({ genres });
+  }
 
+  async populateMovie() {
     if (this.props.movieId) {
       const movie = await getMovie(this.props.movieId);
 
@@ -34,6 +36,11 @@ class MovieForm extends Form {
 
       this.setState({ data: this.mapToViewModel(movie) });
     }
+  }
+
+  async componentDidMount() {
+    await this.populateGenres();
+    await this.populateMovie();
   }
 
   mapToViewModel(movie) {
