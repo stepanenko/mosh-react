@@ -16,6 +16,7 @@ import EditMovie from './components/editMovie';
 import Rentals from './components/rentals';
 import Users from './components/admin/users';
 import Products from './components/admin/products';
+import Countries from './components/countries';
 
 
 function App() {
@@ -30,13 +31,14 @@ function App() {
           <Route path='movies' element={<Movies />} />
           <Route path='movies/new-movie' element={<AddMovie navigate={navigate} />} />
           <Route path='movies/:id' element={<EditMovie />} />
-          <Route path='login' element={<LoginForm />} />
-          <Route path='register' element={<RegisterForm />} />
+          <Route path='countries' element={<Countries />} />
           <Route path='customers' element={<Customers />}>
             <Route exact path=':customer' element={<Customer />} />
             <Route path=':year?/:month?' element={props => <Customers {...props} />} />
           </Route>
           <Route path='rentals' element={<Rentals />} />
+          <Route path='login' element={<LoginForm />} />
+          <Route path='register' element={<RegisterForm />} />
           <Route path='admin' element={<Dashboard />}>
             <Route path='users' element={<Users />} />
             <Route path='products' element={<Products />} />
