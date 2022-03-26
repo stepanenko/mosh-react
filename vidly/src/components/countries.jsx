@@ -1,31 +1,35 @@
 
 import { useEffect, useState } from "react";
 
-const URL = 'https://api.countrylayer.com/v2/';
-const ACCESS_KEY = '08f66956ae63a3ef63272e3b37977e6ee0';
+const URL = 'https://restcountries.com/v3.1/lang/';
+
 
 const Countries = () => {
   const [countries, setCountries] = useState([]);
-  const [myCountries, setMyCountries] = useState([
-    { id: '1', name: 'Ukraine' },
-    { id: '2', name: 'Germany' },
-    { id: '3', name: 'France' },
-  ]);
 
   useEffect(() => {
     async function fetchCountries() {
-
-      console.log('Fetched');
+      try {
+        const promise = await fetch(URL + 'french');
+        const resCountries = await promise.json();
+        console.log('RES:', resCountries);
+        setCountries(resCountries);
+      } catch (err) {
+        console.log('Error while fetching', err);
+      }
     }
 
     fetchCountries();
-  });
+  }, []);
 
   return (
     <>
       <h2>Countries</h2>
+      <label htmlFor='language'>Language</label>
+      <input type="text" name='language' className="form-control" />
+      <h2>French speaking countries:</h2>
       <ul>
-        {myCountries.map(c => <li key={c.id}>{c.name}</li>)}
+        {countries.map(c => <li key={c.name.common}>{c.name.common} {c.flag} Ppl: {c.population}</li>)}
       </ul>
       <pre></pre>
     </>
