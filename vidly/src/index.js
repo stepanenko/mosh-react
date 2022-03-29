@@ -3,6 +3,7 @@ import React, { StrictMode } from 'react';
 import * as ReactDOMClient from 'react-dom/client';
 import { BrowserRouter } from 'react-router-dom';
 
+import ErrorBoundary from './components/errorBoundary';
 import App from './App';
 import './index.css';
 import 'bootstrap/dist/css/bootstrap.css';
@@ -13,9 +14,11 @@ const root = ReactDOMClient.createRoot(container);
 
 root.render(
   // <StrictMode>
-    <BrowserRouter>
-      <App />
-    </BrowserRouter>
+    <ErrorBoundary>
+      <BrowserRouter>
+        <App />
+      </BrowserRouter>
+    </ErrorBoundary>
   // </StrictMode>
 );
 
