@@ -12,9 +12,12 @@ const container = document.getElementById('app');
 const root = ReactDOMClient.createRoot(container);
 
 root.render(
-  <StrictMode>
+  // <StrictMode>
     <BrowserRouter>
       <App />
     </BrowserRouter>
-  </StrictMode>
+  // </StrictMode>
 );
+
+// StrictMode renders components twice (on dev but not production) in order to detect
+// any problems with your code and warn you about them (which can be quite useful).

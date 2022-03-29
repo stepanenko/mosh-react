@@ -21,7 +21,7 @@ class MovieForm extends Form {
   };
 
   async populateGenres() {
-    const genres = await getGenres();
+    const genres = [{ _id: '', name: 'Choose...' }, ...await getGenres()];
     this.setState({ genres });
   }
 
