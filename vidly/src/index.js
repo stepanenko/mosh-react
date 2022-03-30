@@ -1,5 +1,6 @@
 
-import React, { StrictMode } from 'react';
+// import React from 'react';
+// import { StrictMode } from 'react';
 import * as ReactDOMClient from 'react-dom/client';
 import { BrowserRouter } from 'react-router-dom';
 
@@ -24,3 +25,6 @@ root.render(
 
 // StrictMode renders components twice (on dev but not production) in order to detect
 // any problems with your code and warn you about them (which can be quite useful).
+
+// Error boundaries work like a JavaScript catch {} block, but for components.
+// Error boundaries only catch errors in the components below them in the tree.

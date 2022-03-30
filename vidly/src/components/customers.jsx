@@ -29,17 +29,6 @@ function Customers() {
     fetchData();
   }, []);
 
-  // Or romise way:
-  // useEffect(() => {
-  //   fetchGenres()
-  //     .then(data => setGenres(data))
-  //     .catch(err => console.log('Couldn`t fetch data', err));
-
-  //   fetchMovies()
-  //     .then(data => setMovies(data))
-  //     .catch(err => console.log('Couldn`t fetch data', err));
-  // }, []);
-
   return (
     <>
       <h1>All Customers</h1>

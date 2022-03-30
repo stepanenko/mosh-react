@@ -5,7 +5,7 @@ import { Link, NavLink } from 'react-router-dom';
 const NavBar = () => {
 
   return (
-    <nav className="navbar navbar-expand-lg navbar-light bg-light">
+    <nav className="navbar navbar-expand-md navbar-light bg-light">
       <Link className="navbar-brand" to='/'>VIDLY</Link>
       <div className="navbar-nav">
         <NavLink className="nav-item nav-link" to='/movies'>Movies</NavLink>

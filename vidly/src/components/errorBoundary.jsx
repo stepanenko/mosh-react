@@ -1,6 +1,7 @@
 
 import React from 'react';
 
+// Only class components can be error boundaries:
 class ErrorBoundary extends React.Component {
   state = { hasError: false };
 
