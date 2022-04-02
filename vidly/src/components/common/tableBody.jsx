@@ -7,7 +7,7 @@ const TableBody = ({ data, columns }) => {
   return (
     <tbody>
       {data.map(item =>
-        <tr key={item._id}>
+        <tr key={item._id ?? item.name.common}>
           {columns.map(column => {
             // my solution:
             return column.content

@@ -1,5 +1,6 @@
 
 import { useEffect, useState } from "react";
+import _ from "lodash";
 
 import Select from "../common/select";
 import CountriesTable from "./CountriesTable";
@@ -17,6 +18,7 @@ const options = [
 const Countries = () => {
   const [countries, setCountries] = useState([]);
   const [language, setLanguage] = useState('german');
+  const [sortColumn, setSortColumn] = useState({ path: "title", order: "asc" });
 
   useEffect(() => {
     async function fetchCountries() {
@@ -37,6 +39,15 @@ const Countries = () => {
     setLanguage(input.value);
   };
 
+  const handleSort = (sortColumn) => {
+    console.log('SORT', sortColumn);
+    setSortColumn({ ...sortColumn });
+  };
+
+  const getSortedCountries = () => {
+    return _.orderBy(countries, sortColumn.path, sortColumn.order);
+  };
+
   return (
     <>
       <h2>Countries</h2>
@@ -47,12 +58,11 @@ const Countries = () => {
         onChange={handleChange}
       />
       <h2>{language.toUpperCase()} speaking countries:</h2>
-      <CountriesTable countries={countries} />
-      {/* <ul>
-        {countries.map(c =>
-          <li key={c.name.common}>{c.name.common} ({c.region}) {c.flag} Ppl: {c.population}</li>
-        )}
-      </ul> */}
+      <CountriesTable
+        sortColumn={sortColumn}
+        onSort={handleSort}
+        countries={getSortedCountries()}
+      />
     </>
   );
 }

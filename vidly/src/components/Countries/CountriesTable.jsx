@@ -1,12 +1,9 @@
 
-import { useState } from "react";
-
 import TableHeader from "../common/tableHeader";
 import TableBody from "../common/tableBody";
 
 
-function CountriesTable({ countries }) {
-  const [sortColumn, setSortColumn] = useState({ path: "title", order: "asc" });
+function CountriesTable({ countries, sortColumn, onSort }) {
   const columns = [
     { label: 'Flag', path: 'flag' },
     { label: 'Title', path: 'name.common' },
@@ -14,17 +11,12 @@ function CountriesTable({ countries }) {
     { label: 'Population', path: 'population' },
   ];
 
-  const handleSort = (sortColumn) => {
-    console.log('SORT', sortColumn);
-    setSortColumn({ ...sortColumn });
-  };
-
   return (
     <table className="table">
       <TableHeader
         columns={columns}
         sortColumn={sortColumn}
-        onSort={handleSort}
+        onSort={onSort}
       />
       <TableBody
         data={countries}
