@@ -1,7 +1,8 @@
 
 import { useEffect, useState } from "react";
 
-import Select from "./common/select";
+import Select from "../common/select";
+import CountriesTable from "./CountriesTable";
 
 const URL = 'https://restcountries.com/v3.1/lang/';
 const options = [
@@ -46,11 +47,12 @@ const Countries = () => {
         onChange={handleChange}
       />
       <h2>{language.toUpperCase()} speaking countries:</h2>
-      <ul>
+      <CountriesTable countries={countries} />
+      {/* <ul>
         {countries.map(c =>
           <li key={c.name.common}>{c.name.common} ({c.region}) {c.flag} Ppl: {c.population}</li>
         )}
-      </ul>
+      </ul> */}
     </>
   );
 }

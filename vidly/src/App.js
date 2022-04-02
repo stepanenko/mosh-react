@@ -16,7 +16,7 @@ import EditMovie from './components/editMovie';
 import Rentals from './components/rentals';
 import Users from './components/admin/users';
 import Products from './components/admin/products';
-import Countries from './components/countries';
+import Countries from './components/Countries';
 
 
 function App() {
